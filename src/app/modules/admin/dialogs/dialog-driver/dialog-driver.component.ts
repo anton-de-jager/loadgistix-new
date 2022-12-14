@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from "@angular/material/dialog";
 import { Subject } from 'rxjs';
 import { ApiService } from 'app/modules/admin/services/api.service';
-import { DialogCameraComponent } from '../dialog-camera/dialog-camera.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'environments/environment';
@@ -102,27 +101,6 @@ export class DialogDriverComponent {
     //         reader.readAsDataURL(this.fileToUpload);
     //     //}
     // }
-
-    initCamera() {
-        const dialogConfig = new MatDialogConfig();
-
-        dialogConfig.autoFocus = true;
-        dialogConfig.disableClose = true;
-        dialogConfig.hasBackdrop = true;
-        dialogConfig.ariaLabel = 'fffff';
-        dialogConfig.width = "800px";
-
-        const dialogRef = this.dialog.open(DialogCameraComponent,
-            dialogConfig);
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                this.form.controls['avatar'].setValue(result._imageAsDataUrl);
-                this.previewImage = result._imageAsDataUrl;
-                this.form.controls['avatarChanged'].setValue(true);
-            }
-        });
-    }
 
     public hasError = (controlName: string, errorName: string) => {
         return this.form.controls[controlName].hasError(errorName);

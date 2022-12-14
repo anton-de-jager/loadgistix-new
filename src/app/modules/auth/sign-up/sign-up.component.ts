@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseAlertType } from '@fuse/components/alert';
 import { AuthService } from 'app/core/auth/auth.service';
-import { DialogCameraComponent } from 'app/modules/admin/dialogs/dialog-camera/dialog-camera.component';
 import { DialogTcComponent } from 'app/modules/admin/dialogs/dialog-tc/dialog-tc.component';
 import { ApiService } from 'app/modules/admin/services/api.service';
 import { environment } from 'environments/environment';

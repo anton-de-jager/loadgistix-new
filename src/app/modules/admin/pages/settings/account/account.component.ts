@@ -7,7 +7,6 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { FuseAlertType } from '@fuse/components/alert';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { User } from 'app/core/user/user.types';
-import { DialogCameraComponent } from 'app/modules/admin/dialogs/dialog-camera/dialog-camera.component';
 import { ApiService } from 'app/modules/admin/services/api.service';
 import { VariableService } from 'app/shared/variable.service';
 import { environment } from 'environments/environment';

@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, AfterViewInit, Inject, HostListener } from '@angular/core';
-import { WebcamImage, WebcamInitError, WebcamUtil } from 'ngx-webcam';
 import { Observable, Subject } from 'rxjs';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { environment } from 'environments/environment';

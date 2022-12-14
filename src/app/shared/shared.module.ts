@@ -47,8 +47,6 @@ import {
     NGX_MAT_DATE_FORMATS
 } from '@angular-material-components/datetime-picker';
 
-import { WebcamModule } from 'ngx-webcam';
-
 import { MapComponent } from 'app/modules/admin/controls/map/map.component';
 import { StarRatingComponent } from 'app/modules/admin/controls/star-rating/star-rating.component';
 import { AdvertComponent } from 'app/modules/admin/controls/advert/advert.component';
@@ -65,7 +63,6 @@ import { DialogBidComponent } from 'app/modules/admin/dialogs/dialog-bid/dialog-
 import { DialogBidListComponent } from 'app/modules/admin/dialogs/dialog-bid-list/dialog-bid-list.component';
 import { DialogAdvertComponent } from 'app/modules/admin/dialogs/dialog-advert/dialog-advert.component';
 import { DialogDirectoryComponent } from 'app/modules/admin/dialogs/dialog-directory/dialog-directory.component';
-import { DialogCameraComponent } from 'app/modules/admin/dialogs/dialog-camera/dialog-camera.component';
 import { MatRippleModule } from '@angular/material/core';
 import { TranslocoModule } from '@ngneat/transloco';
 import { DialogVehicleCategoryComponent } from 'app/modules/admin/dialogs/dialog-vehicleCategory/dialog-vehicleCategory.component';
@@ -159,8 +156,6 @@ import { DialogInsuranceComponent } from 'app/modules/landing/dialog-insurance/d
         NgxMatDatetimePickerModule,
         NgxMatNativeDateModule,
 
-        WebcamModule,
-
         GoogleMapsModule
     ],
     exports: [
@@ -214,8 +209,6 @@ import { DialogInsuranceComponent } from 'app/modules/landing/dialog-insurance/d
         NgxMatDatetimePickerModule,
         NgxMatNativeDateModule,
 
-        WebcamModule,
-
         MapComponent,
         StarRatingComponent,
         AdvertComponent,
@@ -239,7 +232,6 @@ import { DialogInsuranceComponent } from 'app/modules/landing/dialog-insurance/d
         DialogAdvertComponent,
         DialogDirectoryComponent,
         DialogDirectoryDetailComponent,
-        DialogCameraComponent,
         DialogInsuranceComponent,
         MapComponent,
         StarRatingComponent,
@@ -277,7 +269,6 @@ import { DialogInsuranceComponent } from 'app/modules/landing/dialog-insurance/d
         DialogAdvertComponent,
         DialogDirectoryComponent,
         DialogDirectoryDetailComponent,
-        DialogCameraComponent,
         DialogInsuranceComponent,
 
         DialogClientComponent,

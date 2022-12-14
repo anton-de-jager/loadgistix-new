@@ -6,7 +6,6 @@ import { MatDialog } from "@angular/material/dialog";
 import { Subject } from 'rxjs';
 import { ApiService } from 'app/modules/admin/services/api.service';
 import { DialogAddressComponent } from '../dialog-address/dialog-address.component';
-import { DialogCameraComponent } from '../dialog-camera/dialog-camera.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import compress from 'compress-base64';
 import { FuseSplashScreenService } from '@fuse/services/splash-screen';

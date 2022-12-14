@@ -5,7 +5,6 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from "@angular/material/dialog";
 import { Subject } from 'rxjs';
 import { ApiService } from 'app/modules/admin/services/api.service';
-import { DialogCameraComponent } from '../dialog-camera/dialog-camera.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { reviewDriver } from '../../models/reviewDriver.model';
 import { reviewLoad } from '../../models/reviewLoad.model';
