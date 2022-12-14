@@ -1,0 +1,21 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{formData.title}} Vehicle Category
+</h1>
+<div mat-dialog-content fxLayout="column">
+    <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+        [formGroup]="form" novalidate style="padding: 0px!important;">
+        <div fxLayout="row wrap" class="w-100-p">
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Description</mat-label><input matInput placeholder="Description"
+                        formControlName="description" id="description">
+                    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onYesClick()" [disabled]="!form.valid">Submit</button>
+</div>

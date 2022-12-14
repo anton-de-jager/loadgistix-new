@@ -1,0 +1,212 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Client
+</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Description</mat-label><input type='text' matInput placeholder='Description'
+            formControlName='description' id='description'>
+          <mat-error>Description is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Short Description</mat-label><input type='text' matInput placeholder='Short Description'
+            formControlName='descriptionShort' id='descriptionShort'>
+          <mat-error>Short Description is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Registration Number</mat-label><input type='text' matInput placeholder='Registration Number'
+            formControlName='registrationNumber' id='registrationNumber'>
+          <mat-error>Registration Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>VAT Number</mat-label><input type='text' matInput placeholder='VAT Number'
+            formControlName='vatNumber' id='vatNumber'>
+          <mat-error>VAT Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Contact</mat-label><input type='text' matInput placeholder='Contact' formControlName='contact'
+            id='contact'>
+          <mat-error>Contact is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Contact Phone</mat-label><input type='text' matInput placeholder='Contact Phone'
+            formControlName='contactPhone' id='contactPhone'>
+          <mat-error>Contact Phone is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Contact Email</mat-label><input type='text' matInput placeholder='Contact Email'
+            formControlName='contactEmail' id='contactEmail'>
+          <mat-error>Contact Email is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Address 1</mat-label><input type='text' matInput placeholder='Address 1' formControlName='address1'
+            id='address1'>
+          <mat-error>Address 1 is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Address 2</mat-label><input type='text' matInput placeholder='Address 2' formControlName='address2'
+            id='address2'>
+          <mat-error>Address 2 is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>City</mat-label><input type='text' matInput placeholder='City' formControlName='addressCity'
+            id='addressCity'>
+          <mat-error>City is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Province</mat-label><input type='text' matInput placeholder='Province'
+            formControlName='addressProvince' id='addressProvince'>
+          <mat-error>Province is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Country</mat-label><input type='text' matInput placeholder='Country'
+            formControlName='addressCountry' id='addressCountry'>
+          <mat-error>Country is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Postal Code</mat-label><input type='text' matInput placeholder='Postal Code'
+            formControlName='addressCode' id='addressCode'>
+          <mat-error>Postal Code is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Billing Date</mat-label>
+          <mat-select placeholder="Billing Date" formControlName="dateBillingId">
+            <mat-option *ngFor="let dateBillingItem of dateBillingItems" [value]="dateBillingItem.id">
+              {{dateBillingItem.dayNumber}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Billing Date is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Status</mat-label>
+          <mat-select placeholder="Status" formControlName="statusId">
+            <mat-option *ngFor="let statusItem of statusItems" [value]="statusItem.id">
+              {{statusItem.description}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Status is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' *ngIf="data.title==='Update'" class='p-2 flex flex-col overflow-hidden border mb-4'>
+        <!-- Header -->
+        <div class="flex flex-0 items-center h-18 px-4 md:px-6 border-b bg-gray-50 dark:bg-transparent">
+
+          <!-- Contact info -->
+          <div class="flex items-center ml-2 lg:ml-0 mr-2">
+            <div class="ml-4 text-lg font-medium leading-5 truncate">Notes</div>
+          </div>
+
+        </div>
+        <!-- Conversation -->
+        <div class="flex overflow-y-auto flex-col-reverse">
+          <div class="flex flex-col flex-auto flex-shrink p-6 bg-card dark:bg-transparent">
+            <ng-container
+              *ngFor="let noteItem of noteItems; let i = index; let first = first; let last = last; trackBy: trackByFn">
+              <!-- Start of the day -->
+              <ng-container
+                *ngIf="first || (noteItems[i - 1].createdOn | date:'d') !== (noteItem.createdOn | date:'d')">
+                <div class="flex items-center justify-center my-3 -mx-6">
+                  <div class="flex-auto border-b"></div>
+                  <div class="flex-0 mx-4 text-sm font-medium leading-5 text-secondary">
+                    {{noteItem.createdOn | date: 'longDate'}}
+                  </div>
+                  <div class="flex-auto border-b"></div>
+                </div>
+              </ng-container>
+              <div class="flex flex-col" [ngClass]="{'items-end': noteItem.isMine,
+                              'items-start': !noteItem.isMine,
+                              'mt-0.5': i > 0 && noteItems[i - 1].isMine === noteItem.isMine,
+                              'mt-3': i > 0 && noteItems[i - 1].isMine !== noteItem.isMine}">
+                <!-- Bubble -->
+                <div class="relative max-w-3/4 px-3 py-2 rounded-lg" [ngClass]="{'bg-blue-500 text-blue-50': noteItem.isMine,
+                                  'bg-gray-500 text-gray-50': !noteItem.isMine}">
+                  <!-- Speech bubble tail -->
+                  <ng-container *ngIf="last || noteItems[i + 1].isMine !== noteItem.isMine">
+                    <div class="absolute bottom-0 w-3 transform" [ngClass]="{'text-blue-500 -right-1 -mr-px mb-px': noteItem.isMine,
+                                          'text-gray-500 -left-1 -ml-px mb-px -scale-x-1': !noteItem.isMine}">
+                      <ng-container *ngTemplateOutlet="speechBubbleExtension"></ng-container>
+                    </div>
+                  </ng-container>
+                  <!-- Message -->
+                  <div class="min-w-4 leading-5" [innerHTML]="noteItem.content">
+                  </div>
+                </div>
+                <!-- Time -->
+                <ng-container *ngIf="first
+                             || last
+                             || noteItems[i + 1].isMine !== noteItem.isMine
+                             || noteItems[i + 1].createdOn !== noteItem.createdOn">
+                  <div class="my-0.5 text-sm font-medium text-secondary" [ngClass]="{'mr-3': noteItem.isMine,
+                                      'ml-3': !noteItem.isMine}">
+                    {{noteItem.createdOn | date:'HH:mm'}}
+                  </div>
+                </ng-container>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Message field -->
+        <form name="formNote" [formGroup]="formNote" novalidate>
+          <div class="flex items-end p-4 border-t bg-gray-50 dark:bg-transparent">
+            <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded fuse-mat-bold w-full ml-4">
+              <textarea class="min-h-5 my-0 resize-none" style="margin: 11px 0 !important; padding: 0 !important;"
+                [rows]="1" matInput #messageInput formControlName="content"></textarea>
+            </mat-form-field>
+            <div class="flex items-center h-11 my-px ml-4">
+              <button mat-icon-button (click)="addNote()">
+                <mat-icon class="transform rotate-90" [svgIcon]="'heroicons_outline:paper-airplane'"></mat-icon>
+              </button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" [mat-dialog-close]="form.value" [disabled]="!form.valid">Submit</button>
+</div>

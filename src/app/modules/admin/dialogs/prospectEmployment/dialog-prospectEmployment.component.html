@@ -1,0 +1,126 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Employment</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Description</mat-label><input type='text' matInput placeholder='Description'
+            formControlName='description' id='description'>
+          <mat-error>Description is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Position</mat-label><input type='text' matInput placeholder='Position' formControlName='position'
+            id='position'>
+          <mat-error>Position is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs='50' class="p-4">
+        <mat-form-field appearance="outline" class="w-100-p">
+          <mat-label>Date From</mat-label>
+          <input matInput [matDatepicker]="pickerFrom" formControlName="dateStart">
+          <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFrom></mat-datepicker>
+          <mat-error>Date From is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="100" fxFlex.gt-xs='50' class="p-4">
+        <mat-form-field appearance="outline" class="w-100-p">
+          <mat-label>Date To</mat-label>
+          <input matInput [matDatepicker]="pickerTo" formControlName="dateEnd">
+          <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+          <mat-datepicker #pickerTo></mat-datepicker>
+          <mat-error>Date To is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Reason for Leaving</mat-label><input type='text' matInput placeholder='Reason for Leaving'
+            formControlName='reasonForLeaving' id='reasonForLeaving'>
+          <mat-error>Reason for Leaving is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div fxLayout="row wrap" style="width:100%">
+    <div fxFlex='100'>
+      <div class="grid grid-cols-1 gap-x-1">
+        <!-- <div class="my-3 border-b"></div> -->
+        <div class="text-xl tracking-tight text-secondary pt-8"><b>DUTIES:</b></div>
+        <!-- <div class="my-3 border-b"></div> -->
+      </div>
+      <table mat-table [dataSource]="dataSourceDuty" style="width:100%">
+
+        <ng-container matColumnDef="cud">
+          <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                    style="padding-left: 0px!important;" style="width: 120px;">
+            <button mat-icon-button color="default" (click)="initUpsertDuty(null)" matTooltip="Add Duty">
+              <mat-icon class="fab-icon">add</mat-icon>
+            </button>
+          </th>
+          <td mat-cell *matCellDef="let rowDuty" class="cudColumn ml-0">
+            <button mat-icon-button color="default" (click)="initUpsertDuty(rowDuty)"
+              matTooltip="Update Duty">
+              <mat-icon class="fab-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="default" (click)="initDeleteDuty(rowDuty)"
+              matTooltip="Remove Duty">
+              <mat-icon class="fab-icon">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-header> Duty </th>
+          <td mat-cell *matCellDef="let rowDuty"> {{rowDuty.description}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsDuty"></tr>
+        <tr mat-row *matRowDef="let rowDuty; columns: displayedColumnsDuty;"></tr>
+      </table>
+    </div>
+    <div fxFlex='100'>
+      <div class="grid grid-cols-1 gap-x-1">
+        <!-- <div class="my-3 border-b"></div> -->
+        <div class="text-xl tracking-tight text-secondary pt-8"><b>TECHNOLOGIES USED:</b></div>
+        <!-- <div class="my-3 border-b"></div> -->
+      </div>
+      <table mat-table [dataSource]="dataSourceTechnology" style="width:100%">
+
+        <ng-container matColumnDef="cud">
+          <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                    style="padding-left: 0px!important;" style="width: 120px;">
+            <button mat-icon-button color="default" (click)="initUpsertTechnology(null)" matTooltip="Add Technology">
+              <mat-icon class="fab-icon">add</mat-icon>
+            </button>
+          </th>
+          <td mat-cell *matCellDef="let rowTechnology" class="cudColumn ml-0">
+            <button mat-icon-button color="default" (click)="initUpsertTechnology(rowTechnology)"
+              matTooltip="Update Technology">
+              <mat-icon class="fab-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button color="default" (click)="initDeleteTechnology(rowTechnology)"
+              matTooltip="Remove Technology">
+              <mat-icon class="fab-icon">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef mat-header> Technology </th>
+          <td mat-cell *matCellDef="let rowTechnology"> {{rowTechnology.description}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsTechnology"></tr>
+        <tr mat-row *matRowDef="let rowTechnology; columns: displayedColumnsTechnology;"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" [mat-dialog-close]="form.value" [disabled]="!form.valid">Submit</button>
+</div>

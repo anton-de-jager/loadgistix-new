@@ -1,0 +1,450 @@
+<!-- <div class="absolute inset-0 min-w-0 text-center overflow-auto print:overflow-visible" cdkScrollable>
+
+    <div class="inline-block p-6 sm:p-10 text-left print:p-0">
+
+        <div
+            class="w-240 p-16 rounded-2xl shadow bg-card print:w-auto print:rounded-none print:shadow-none print:bg-transparent">
+
+            <div class="flex items-start justify-between">
+                <div class="grid grid-cols-1 gap-x-4 gap-y-1">
+                    <div class="text-4xl tracking-tight text-secondary mt-16">STATEMENT OF WORK</div>
+                </div>
+                <div class="grid auto-cols-max grid-flow-col gap-x-8 -mr-16 py-6 px-8 rounded-l-2xl bg-accent dark">
+                    <div class="place-self-center w-24">
+                        <img class="w-24" src="assets/images/logo/logoWhite.png">
+                    </div>
+                    <div class="pl-10 border-l text-md">
+                        <div class="font-medium">Loadgistix (Pty) Ltd</div>
+                        <div>Reg #: 2021/580536/07</div>
+                        <div>VAT #: Pending</div>
+                        <div>14 Judy Street, Brackenhurst, Alberton, 1447</div>
+                        <div>info@loadgistix.com</div>
+                        <div>app.loadgistix.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl prose prose-sm">
+
+                <br>
+                <p class="lead">This <b>Statement of Work (SOW)</b> is made pursuant to the terms of the agreement
+                    BETWEEN: </p>
+
+                <ol>
+                    <li><b><u>&nbsp;Loadgistix (Pty) Ltd&nbsp;</u></b>, registered in accordance with the laws of South Africa with
+                        registration
+                        number <b><u>&nbsp;2021/580536/07&nbsp;</u></b> whose registered office is <b>14 Judy Street, Brackenhurst,
+                            Alberton,
+                            Republic of South Africa</b>&nbsp;<i><b>("LUNKULU")</b></i>; </li>
+                </ol>
+                <p class="text-center">and</p>
+                <ol start="2">
+                    <li><b>{{clientFullName}}</b>, registered in accordance with the laws of South Africa with
+                        registration
+                        number <b>{{clientRegNumber}}</b> whose registered office is <b>{{clientAddress}}</b>&nbsp;<i><b>("CLIENT")</b></i>; </li>
+                </ol>
+
+
+                <p class="lead"><b>NOW THEREFORE IT IS HEREBY AGREED as follows:</b></p>
+
+                <ol class="nested-counter-list">
+                    <li>GENERAL
+                        <ul>
+                            <li>This Statement of Work is issued under and in accordance with the terms of the Master
+                                Services Agreement between <i>LUNKULU</i> and the <i>CLIENT</i> dated {{contractDate | date:'longDate'}},
+                                with
+                                agreement number <b>{{agreementNumber}}</b> ("Agreement") and save where expressly
+                                provided to the contrary herein, shall be subject to the terms and conditions of the
+                                Agreement. </li>
+                            <li><i>LUNKULU</i> hereby agrees to provide the <i>CLIENT</i> to provide the Services set
+                                out in
+                                this Statement of Work to the <i>CLIENT</i>. </li>
+                            <li>In this Statement of Work, unless the context otherwise requires, terms used but not
+                                defined in this Statement of Work shall have the meanings given to them in the
+                                Agreement.</li>
+                            <li>Subject to the terms and conditions expressly agreed between the Parties in this
+                                Statement of Work, the order of precedence is:
+                                <ul>
+                                    <li>the Master Services Agreement; and </li>
+                                    <li>the Statement of Work. </li>
+                                </ul>
+                            </li>
+                            <li>This Statement of Work may be amended by agreement, by a change control note, duly
+                                signed by the Parties, which details the following:
+                                <ul>
+                                    <li>the effective date of the change:</li>
+                                    <li>the reason for the change; </li>
+                                    <li>full details of the change; </li>
+                                    <li>the price (if any) of the fees applicable to the change; </li>
+                                    <li>a schedule of payments if appropriate; </li>
+                                    <li>details of the extent to which <i>LUNKULU</i> shall continue to carry out the
+                                        Services; and</li>
+                                    <li>he date on which the change control note expires. </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    <li>TERM OF STATEMENT OF WORK
+                        <ul>
+                            <li>This Statement of Work will commence on the Services Commencement Date as set out below.
+                            </li>
+                            <li>For time and material engagements, the Services Completion Date of this Statement of
+                                Work will be the earliest of either:
+                                <ul>
+                                    <li>the date when the Services have been completed:</li>
+                                    <li>the date on which the <i>CLIENT</i> has completed the agreed number of hours; or
+                                    </li>
+                                    <li>the Services Completion Date as set out below has been reached. </li>
+                                </ul>
+                            </li>
+                            <li>If this Statement of Work is for time and material Services and ends by reaching the
+                                estimated Services Completion Date or by completing the agreed number of hours, in the
+                                event the <i>CLIENT</i> requires an extension, we hereby agree to extend the term of
+                                this
+                                Statement of Work for the period of time or the number of hours requested by the
+                                <i>CLIENT</i>
+                                by signing a Change Control Note on the same terms and conditions as this Statement of
+                                Work, unless explicitly agreed otherwise by the Parties in the Statement of Work
+                                amendment, at the first request of the <i>CLIENT</i>. </li>
+                            <li>Services Commencement Date
+                                <ul>
+                                    <li><b>{{startDate | date:'longDate'}}</b></li>
+                                </ul>
+                            </li>
+                            <li>Services Completion Date
+                                <ul>
+                                    <li><b>{{endDate | date:'longDate'}} or 30 days' notice</b> </li>
+                                </ul>
+                            </li>
+                            <li>Notwithstanding anything to the contrary in the Agreement or this Statement of Work, the
+                                <i>CLIENT</i> and <i>LUNKULU</i> shall have the right to terminate this Statement of Work
+                                on
+                                30 (thirty) days written notice, without giving reasons for such termination and
+                                without incurring penalties of any nature whatsoever.
+                            </li>
+                            <li>The <i>CLIENT</i> shall pay to <i>LUNKULU</i> any actual and reasonable costs incurred
+                                and
+                                any Fees that are stated in this Statement of Work on a time and material basis or
+                                completed milestone basis, as may be applicable until the date of termination or expiry
+                                of this Statement of Work. </li>
+                        </ul>
+                    </li>
+                    <li>SCOPE OF SERVICES
+                        <ul>
+                            <li>The <i>CLIENT</i> agrees to provide the Services in accordance with the Agreement and
+                                this
+                                Statement of Work, as more particularly set out below.
+                                <ul>
+                                    <li>Services
+                                        <ul>
+                                            <li>
+                                                As directed by the <i>CLIENT</i>. The services are in the Application
+                                                Development space.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Service Location
+                                        <ul>
+                                            <li>
+                                                <b>{{contractLocation}}</b>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Acceptance of Services
+                                        <ul>
+                                            <li>
+                                                Not Applicable (Services will be provided under the direction and
+                                                supervision of the <i>CLIENT</i> and <i>LUNKULU</i>)
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>FEES
+                        <ul>
+                            <li>The <i>CLIENT</i> shall pay <i>LUNKULU</i> the Fees in accordance with the Agreement and
+                                this Statement of Work, as more particularly set out below.
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Fee:</b></td>
+                                            <td>
+                                                <p>Time and materials:</p>
+                                                <p>Hourly rate of <b>{{hourlyRate | currency:'R'}}</b> per hour (Exclusive of
+                                                    VAT).</p>
+                                                <p>Please note: <i>LUNKULU</i> will apply a CPIX increase on <b>{{endDate |
+                                                    date:'longDate'}}</b> </p>
+                                            </td>
+                                        <tr>
+                                            <td><b>Calculation method:</b></td>
+                                            <td>Time and Materials </td>
+                                        <tr>
+                                        <tr>
+                                            <td><b>Invoicing period:</b></td>
+                                            <td>Monthly </td>
+                                        <tr>
+                                        <tr>
+                                            <td><b>Submission to:</b></td>
+                                            <td><i>LUNKULU</i> Designated person </td>
+                                        <tr>
+                                            <td><b>Supporting documentation required:</b></td>
+                                            <td>For time and material engagements:
+                                                <ul>
+                                                    <li>Correct invoices; and</li>
+                                                    <li>Timesheets, as signed off by a duly authorized representative of
+                                                        the <i>CLIENT</i>. </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>The parties agree that the fees for timelines as set out in this Statement of Work are
+                                accurate, reliable and complete. </li>
+                        </ul>
+                    </li>
+
+                    <li>CLIENT RESPONSIBILITIES
+                        <ul>
+                            <li>In addition to its obligations under the Agreement, the <i>CLIENT</i> shall comply with
+                                the
+                                obligations set out below for the purpose of this Statement of Work:
+                                <ul>
+                                    <li>Cooperation with other Clients
+                                        <ul>
+                                            <li>If applicable, then <i>LUNKULU</i> must cooperate with any third part
+                                                appointed by the <i>CLIENT</i> where this is necessary to ensure the
+                                                integrated
+                                                and efficient conduct of the Client's operations. Without limiting the
+                                                foregoing, <i>LUNKULU</i> must provide such reasonable assistance to
+                                                other service providers as the <i>CLIENT</i> may request from time to
+                                                time.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>Knowledge transfer
+                                        <ul>
+                                            <li>Subject to any qualification or provision to the contrary in this
+                                                Statement of Work, <i>LUNKULU</i> must provide the following
+                                                assistance to the <i>CLIENT</i> for the duration of this Statement of
+                                                Work:
+                                                <ul>
+                                                    <li>transferring or providing access to the <i>CLIENT</i> to all
+                                                        information by whatever means held, by the <i>CLIENT</i> or
+                                                        under the
+                                                        control of the <i>CLIENT</i>, in connection with this Statement
+                                                        of
+                                                        Work; and </li>
+                                                    <li>making resources available for discussions with the
+                                                        <i>CLIENT</i> as
+                                                        may be required. The time, length and subject of these
+                                                        discussions will be at the sole discretion of the <i>CLIENT</i>,
+                                                        provided that any matter discussed is not considered to reveal
+                                                        any Confidential Information of the <i>CLIENT</i>. </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>CLIENT RESPONSIBILITIES
+                        <ul>
+                            <li>In addition to its obligations under the Agreement, the <i>CLIENT</i> shall comply with
+                                the
+                                obligations set out below for the purpose of this Statement of Work:
+                                <ul>
+                                    <li>The <i>CLIENT</i> will provide to <i>LUNKULU</i> access to the Service Location,
+                                        as
+                                        may be required for the provision of the Services. </li>
+                                    <li>Provide Laptops, Desk space <i>(if required)</i> and related infrastructure to <i>LUNKULU</i>'s
+                                        personnel deployed to deliver the objectives of this Statement of Work for
+                                        the duration of this agreement </li>
+                                    <li>Participate in meetings requested by the Client's team to meet the objectives of
+                                        this Statement of Work </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>RESOURCES
+                        <ul>
+                            <li>Listed below are the Resources which the <i>CLIENT</i> will use to meet the requirements
+                                of
+                                this Statement of Work.
+                                <table class="table table-striped table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            <td>Name OF Resource:</td>
+                                            <td><b>{{contractorDescription}}</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hourly Rate:</td>
+                                            <td><b>{{hourlyRate | currency:'R'}}</b> per hour exclusive of VAT </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Role:</td>
+                                            <td><b>{{role}}</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>No. of Business Days:</td>
+                                            <td>As per time sheets </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Start Date/End Date:</td>
+                                            <td><b>{{startDate | date:'longDate'}}</b> to <b>{{endDate | date:'longDate'}}</b> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Service Location:</td>
+                                            <td><b>{{contractLocation}}</b>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li>Provision of Resources. <i>LUNKULU</i> shall, on request, provide Resources to
+                                provide the Services to the <i>CLIENT</i> and shall take reasonable steps to ensure that
+                                the
+                                Resources:
+                                <ul>
+                                    <li>where engaged on a time and materials basis, completes and signs weekly time
+                                        sheets which accurately record work durations and activities in the format
+                                        acceptable to the <i>CLIENT</i>. All such timesheets shall be submitted by
+                                        <i>LUNKULU</i> to the <i>CLIENT</i> on a monthly basis; </li>
+                                    <li>at all times adhere to the standard information technology, health, safety and
+                                        security procedures and guidelines applicable to the <i>CLIENT</i>'s staff, as
+                                        varied
+                                        and conveyed by the <i>CLIENT</i> to <i>LUNKULU</i> and the Resources from time
+                                        to
+                                        time. </li>
+                                </ul>
+                            </li>
+                            <li>Working Hours. Unless provided otherwise, the Resources shall work for 8 (eight) hours a
+                                day. Should the <i>CLIENT</i> require the Resources to work overtime, it shall request
+                                same in
+                                writing and the Parties shall agree to such overtime in writing. The Resources may not
+                                work overtime without the express prior written consent of the <i>CLIENT</i>. </li>
+                            <li>Resources to work under the Client's direction. Unless specified otherwise, the
+                                Resources shall at all times work under the direction of the <i>CLIENT</i>. </li>
+                            <li>Disciplinary action. <i>LUNKULU</i> will be exclusively responsible for taking
+                                disciplinary action against its resources in accordance with its own disciplinary code
+                                and counseling procedures and shall do so when reasonably called upon to do so by the
+                                <i>CLIENT</i> in writing.
+                            </li>
+                            <li>Unsatisfactory performance. Where for any reason the <i>CLIENT</i> is not satisfied with
+                                the
+                                conduct or performance of the Resources, the <i>CLIENT</i> will inform <i>LUNKULU</i>
+                                thereof in writing, to enable the <i>LUNKULU</i> to institute appropriate action. The
+                                <i>CLIENT</i> shall provide the <i>LUNKULU</i> with all information, documentation and
+                                assistance as may be reasonably required by <i>LUNKULU</i> to conduct any
+                                disciplinary or incapacity hearings effectively.
+                            </li>
+                            <li>Replacement resources. Should:
+                                <ul>
+                                    <li>The <i>CLIENT</i> may request in writing the replacement of a particular
+                                        Resource for
+                                        any reason whatsoever; or </li>
+                                    <li>the Resource be unable for any reason to perform his/her duties for an extended
+                                        period at any time during the currency of the Agreement; <i>LUNKULU</i> shall
+                                        substitute another person, of equivalent skills and qualifications, to assume
+                                        and complete the duties of the incapacitated resources on the same terms and
+                                        conditions without unreasonable delay. </li>
+                                    <li>No change in Resource shall occur without the Client's prior written consent.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Absence.
+                                <ul>
+                                    <li>
+                                        Annual Leave.
+                                        <ul>
+                                            <li>Resources shall be entitled to take leave during the term of the
+                                                Statement
+                                                of Work unless agreed otherwise. <i>LUNKULU</i> shall communicate the
+                                                same to the <i>CLIENT</i> contact person in advance. In this regard,
+                                                whilst
+                                                <i>LUNKULU</i> is solely responsible for approving and managing such
+                                                leave,
+                                                should the Resource wish to take annual leave during the currency of the
+                                                Statement of Work, same shall be co-ordinated by <i>LUNKULU</i> with
+                                                the
+                                                <i>CLIENT</i> contact person. The <i>CLIENT</i> shall not be charged for
+                                                any such
+                                                Resource
+                                                during the period of any such leave.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Sickness.
+                                        <ul>
+                                            <li>Resources shall be entitled to be absent due to sickness in accordance
+                                                with
+                                                <i>LUNKULU</i>'s policies in this regard, provided that should any
+                                                Resource be absent for more than 5 (five) Business Days in excess of
+                                                their
+                                                allowance, the <i>CLIENT</i> may terminate the Statement of Work in
+                                                respect of
+                                                such
+                                                Resource on written notice to <i>LUNKULU</i>. The <i>CLIENT</i> shall
+                                                likewise
+                                                not be charged for any such Resource during the period of any such
+                                                absence.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>CONTACT PERSONS
+                        <ul>
+                            <li>Listed below are the Contact Persons for the purpose of this Statement of Work.
+                                <ul>
+                                    <li>The <i>CLIENT</i>
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-100">Name:</td>
+                                                    <td><b>{{contactDescription}}</b> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Telephone Number:</td>
+                                                    <td><b>{{contactPhone}}</b> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email Address:</td>
+                                                    <td><b>{{contactEmail}}</b> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li><i>LUNKULU</i>
+                                        <table class="table table-striped table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="w-100">Name:</td>
+                                                    <td><b>Anton de Jager</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Telephone Number:</td>
+                                                    <td><b>064 506 5810</b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email Address:</td>
+                                                    <td><b>anton@loadgistix.com</b></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div> -->

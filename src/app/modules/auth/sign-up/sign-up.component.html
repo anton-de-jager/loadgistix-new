@@ -1,0 +1,194 @@
+<div class="flex flex-col flex-auto items-center sm:justify-center min-w-0">
+    <div class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card">
+        <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+            <!-- Logo -->
+            <div class="w-100-p">
+                <img [src]="'assets/images/logo/loadgistix.png'">
+            </div>
+
+            <!-- Title -->
+            <!-- <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign up</div> -->
+            <div class="flex items-baseline mt-0.5 font-medium center">
+                <div class="mt-8 flex center">Already have an account?</div>
+                <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-in']">Sign in
+                </a>
+            </div>
+            <!-- Sign Up form -->
+            <form class="mt-8" [formGroup]="signUpForm">
+
+                <mat-form-field class="w-full">
+                    <mat-label>Company Name</mat-label>
+                    <input id="company" matInput [formControlName]="'company'">
+                    <mat-error *ngIf="signUpForm.get('company').hasError('required')">
+                        Company is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>First Name</mat-label>
+                    <input id="firstName" matInput [formControlName]="'firstName'">
+                    <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">
+                        First Name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input id="lastName" matInput [formControlName]="'lastName'">
+                    <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">
+                        Last Name is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Phone Number</mat-label>
+                    <input id="phone" matInput [formControlName]="'phone'">
+                    <mat-error *ngIf="signUpForm.get('phone').hasError('required')">
+                        Phone Number is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="w-full">
+                    <mat-label>Email address</mat-label>
+                    <input id="email" matInput [formControlName]="'email'">
+                    <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+                        Email address is required
+                    </mat-error>
+                    <mat-error *ngIf="signUpForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Password field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Password</mat-label>
+                    <input id="password" matInput type="password" [formControlName]="'password'" #passwordField>
+                    <button mat-icon-button type="button"
+                        (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                        matSuffix>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'"
+                            [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'"
+                            [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                    </button>
+                    <mat-error>
+                        Password is required
+                    </mat-error>
+                </mat-form-field>
+
+                <div class="inline-flex items-end w-full mt-1.5">
+                    <input #Image id="fileInput" type="file" (click)="Image.value = null"
+                        (change)="handleFileInput($event.target.files)" accept=".jpg,.png,.jpeg" style="display:none" />
+                    <div fxFlex fxLayout="column">
+                        <div fxFlex fxLayout="row">
+                            <button mat-flat-button fxFlex="100" color="primary" (click)="captureImage()"
+                                style="margin-left: 2px; margin-right: 2px;">Upload
+                                Image</button>
+                        </div>
+                        <div fxFlex fxLayout="row" fxLayoutAlign="center center" style="margin-top:4px">
+                            <img *ngIf="previewImage"
+                                style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                                [src]="previewImage" class="image" (click)="captureImage()" />
+                            <img *ngIf="!previewImage && signUpForm.value.avatar"
+                                style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                                [src]="imagesFolder + 'Adverts/' + signUpForm.value.id + signUpForm.value.avatar + '?t=' + timestamp"
+                                class="image" (click)="captureImage()" />
+                            <img *ngIf="!previewImage && !signUpForm.value.avatar"
+                                style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                                src="assets/images/no-image.jpg" class="image" (click)="captureImage()" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Business Directory</mat-label>
+                    <mat-select placeholder="Listings" formControlName="directoryQuantity">
+                        <mat-option [value]="0">None</mat-option>
+                        <mat-option [value]="-1">FREE listing</mat-option>
+                        <mat-option [value]="1">R99 p/m</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Advert</mat-label>
+                    <mat-select placeholder="Advert" formControlName="advertsQuantity">
+                        <mat-option [value]="0">None</mat-option>
+                        <mat-option [value]="1">R199 p/m</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Vehicles</mat-label>
+                    <mat-select placeholder="Vehicle Listings" formControlName="vehiclesQuantity">
+                        <mat-option [value]="0">None</mat-option>
+                        <mat-option [value]="1">R150 p/m (1 Vehicle)</mat-option>
+                        <mat-option [value]="5">R590 p/m (5 Vehicles)</mat-option>
+                        <mat-option [value]="10">R975 p/m (10 Vehicles)</mat-option>
+                        <mat-option [value]="-1">R2,250 p/m (Unlimited Vehicles)</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Loads</mat-label>
+                    <mat-select placeholder="Loads" formControlName="loadsQuantity">
+                        <mat-option [value]="0">None</mat-option>
+                        <mat-option [value]="1">FREE (Once-Off)</mat-option>
+                        <mat-option [value]="5">R290 p/m (5 Loads per month)</mat-option>
+                        <mat-option [value]="10">R490 p/m (10 Loads per month)</mat-option>
+                        <mat-option [value]="-1">R1,450 p/m (Unlimited)</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+
+                <!-- <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Resource CV's</mat-label>
+                    <mat-select placeholder="Downloads" formControlName="cvQuantity">
+                        <mat-option [value]="0">None</mat-option>
+                        <mat-option [value]="10">1 @ R150.00 p/m</mat-option>
+                        <mat-option [value]="50">2 @ R290.00 p/m</mat-option>
+                        <mat-option [value]="100">3 @ R420.00 p/m</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-slide-toggle [color]="'primary'" [formControlName]="'job'">
+                    <span>Jobs</span>
+                </mat-slide-toggle> -->
+
+                <!-- <hr>
+
+                <div class="flex items-baseline whitespace-nowrap ng-star-inserted">
+                    <div class="text-6xl font-semibold leading-tight tracking-tight">{{getTotal() |
+                        currency:'R':'symbol':'1.0-0'}} /
+                        month</div>
+                </div> -->
+
+                <hr>
+
+                <div class="inline-flex items-end w-full mt-1.5">
+                    <mat-checkbox [color]="'primary'" [formControlName]="'agreements'">
+                        <span>I agree to the</span>
+                        <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['./']" (click)="tc()">Terms
+                            &
+                            Conditions
+                        </a>
+                    </mat-checkbox>
+                </div>
+
+                <!-- Alert -->
+                <fuse-alert class="mt-8 -mb-4" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"
+                    [type]="alert.type" [@shake]="alert.type === 'error'">
+                    {{alert.message}}
+                </fuse-alert>
+
+                <!-- Submit button -->
+                <button class="fuse-mat-button-large w-full mt-6" mat-flat-button [color]="'primary'"
+                    [disabled]="signUpForm.disabled || signUpForm.invalid || !fileToUpload" (click)="signUp()">
+                    <span *ngIf="!signUpForm.disabled">
+                        Sign Up
+                    </span>
+                    <mat-progress-spinner *ngIf="signUpForm.disabled" [diameter]="24" [mode]="'indeterminate'">
+                    </mat-progress-spinner>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

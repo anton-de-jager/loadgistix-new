@@ -1,0 +1,67 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Invoice</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Client</mat-label>
+          <mat-select placeholder="Client" formControlName="clientId" (selectionChange)="changeClient($event)">
+            <mat-option *ngFor="let clientItem of clientItems" [value]="clientItem.id">
+              {{clientItem.description}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Client is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Invoice Number</mat-label><input type='text' matInput placeholder='Invoice Number'
+            formControlName='invoiceNumber' id='invoiceNumber'>
+          <mat-error>Invoice Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Invoice Date</mat-label>
+          <input matInput [matDatepicker]="pickerDateInvoice" formControlName="invoiceDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDateInvoice"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDateInvoice></mat-datepicker>
+          <mat-error>Invoice Date is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Due Date</mat-label>
+          <input matInput [matDatepicker]="pickerDateDue" formControlName="dueDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDateDue"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDateDue></mat-datepicker>
+          <mat-error>Due Date is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>PO Number</mat-label><input type='text' matInput placeholder='PO Number'
+            formControlName='poNumber' id='poNumber'>
+          <mat-error>PO Number is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+  <ng-container *ngIf="timesheetItems">
+    <mat-selection-list #list [(ngModel)]="timesheetItemsSelected">
+      <mat-list-option *ngFor="let timesheetItem of timesheetItems" [value]="timesheetItem.id">
+        {{timesheetItem.surname}},&nbsp;{{timesheetItem.name}}&nbsp;-&nbsp;{{timesheetItem.timesheetDate |
+        date:'longDate'}}
+      </mat-list-option>
+    </mat-selection-list>
+  </ng-container>  
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" (click)="onYesClick()" [disabled]="!form.valid">Submit</button>
+</div>

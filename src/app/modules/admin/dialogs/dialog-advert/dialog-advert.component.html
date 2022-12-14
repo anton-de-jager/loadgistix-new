@@ -1,0 +1,72 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{formData.title}} Advert
+</h1>
+<div mat-dialog-content fxLayout="column">
+    <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+        [formGroup]="form" novalidate style="padding: 0px!important;">
+        <div fxLayout="row wrap" class="w-100-p">
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Advert Package</mat-label>
+                    <mat-select placeholder="Advert Package" formControlName="advertPackageId">
+                        <mat-option *ngFor="let advertPackageItem of formData.advertPackageList"
+                            [value]="advertPackageItem.id">{{advertPackageItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>Advert Package is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Title</mat-label><input matInput placeholder="Title" maxlength="30"
+                        formControlName="title" id="title">
+                    <mat-error *ngIf="hasError('title', 'required')">Title is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Sub-Title</mat-label><input matInput placeholder="Sub-Title" maxlength="50"
+                        formControlName="subTitle" id="subTitle">
+                    <mat-error *ngIf="hasError('subTitle', 'required')">Sub-Title is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Content</mat-label><input matInput placeholder="Content" maxlength="200"
+                        formControlName="content" id="content">
+                    <mat-error *ngIf="hasError('content', 'required')">Content is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Link</mat-label><input matInput placeholder="Link" formControlName="link" id="link">
+                    <mat-error *ngIf="hasError('link', 'required')">Link is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" fxLayout="row" fxLayoutAlign="center center">
+                <input #Image id="fileInput" type="file" (click)="Image.value = null" (change)="handleFileInput($event.target.files)"
+                    accept=".jpg,.png,.jpeg" style="display:none" />
+                <div fxFlex fxLayout="column">
+                    <div fxFlex fxLayout="row">
+                        <button mat-flat-button fxFlex="100" color="primary" (click)="captureImage()"
+                            style="margin-left: 2px; margin-right: 2px;">Upload Image</button>
+                    </div>
+                    <div fxFlex fxLayout="row" fxLayoutAlign="center center" style="margin-top:4px">
+                        <img *ngIf="previewImage" style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="previewImage" class="image" (click)="captureImage()" />
+                        <img *ngIf="!previewImage && form.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="imagesFolder + 'Adverts/' + form.value.id + form.value.avatar + '?t=' + timestamp" class="image"
+                            (click)="captureImage()" />
+                        <img *ngIf="!previewImage && !form.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            src="assets/images/no-image.jpg" class="image" (click)="captureImage()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onYesClick()" [disabled]="!form.valid">Submit</button>
+</div>

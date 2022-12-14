@@ -1,0 +1,469 @@
+<div id="printable" #printable *ngIf="sow!==undefined"
+    class="absolute inset-0 min-w-0 text-center overflow-auto print:overflow-visible" cdkScrollable>
+    <div class="inline-block p-6 sm:p-10 text-left print:p-0">
+
+        <div
+            class="w-240 p-16 rounded-2xl shadow bg-card print:w-auto print:rounded-none print:shadow-none print:bg-transparent">
+
+            <div class="flex items-start justify-between">
+                <div class="grid grid-cols-1 gap-x-4 gap-y-1">
+                    <div class="text-4xl tracking-tight text-secondary mt-16">MASTER SERVICES AGREEMENT</div>
+                </div>
+                <div class="grid auto-cols-max grid-flow-col gap-x-8 -mr-16 py-6 px-8 rounded-l-2xl bg-accent dark">
+                    <div class="place-self-center w-24">
+                        <img class="w-24" src="assets/images/logo/logoWhite.png">
+                    </div>
+                    <div class="pl-10 border-l text-md">
+                        <div class="font-medium">Loadgistix (Pty) Ltd</div>
+                        <div>Reg #: 2021/580536/07</div>
+                        <div>VAT #: Pending</div>
+                        <div>14 Judy Street, Brackenhurst, Alberton, 1447</div>
+                        <div>info@loadgistix.com</div>
+                        <div>app.loadgistix.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl prose prose-sm">
+
+                <br>
+                <p class="lead">This <b>Master Services Agreement (MSA)</b> is made pursuant to the terms of the
+                    agreement
+                    BETWEEN: </p>
+
+                <ol>
+                    <li><b>&nbsp;Loadgistix (Pty) Ltd&nbsp;</b>, registered in accordance with the laws of South
+                        Africa with
+                        registration
+                        number <b>&nbsp;2021/580536/07&nbsp;</b> whose registered office is <b>14 Judy Street,
+                            Brackenhurst,
+                            Alberton,
+                            Republic of South Africa</b>&nbsp;<i><b>("SERVICE PROVIDER")</b></i>; </li>
+                </ol>
+                <p class="text-center">and</p>
+                <ol start="2">
+                    <li><b>{{sow.descriptionClient}}</b>, registered in accordance with the laws of South Africa with
+                        registration
+                        number <b>{{sow.registrationNumberClient}}</b> whose registered office is
+                        <b>{{sow.address1Client}}&nbsp;<span
+                                *ngIf="sow.address2Client">{{sow.address2Client}}</span>,&nbsp;{{sow.addressCityClient}},&nbsp;{{sow.addressProvinceClient}},&nbsp;{{sow.addressCodeClient}}</b>&nbsp;<i><b>("CLIENT")</b></i>;
+                    </li>
+                </ol>
+
+
+                <p class="lead"><b>NOW THEREFORE IT IS HEREBY AGREED as follows:</b></p>
+
+                <ol class="nested-counter-list">
+                    <li>INTRODUCTION
+                        <ul>
+                            <li>In the event that <i>CLIENT</i> as defined in the MSA is not the entity that enters into
+                                a
+                                Agreement, all references to <i>CLIENT</i> under the MSA shall be read as being
+                                references to the <i>CLIENT</i> legal entity under this particular Agreement,
+                                and the <i>CLIENT</i> legal entity which entered into the Agreement shall be
+                                responsible and liable for all obligations of <i>CLIENT</i> under the MSA for the
+                                purposes
+                                of this Agreement. </li>
+                            <li>In the event that the <i>SERVICE PROVIDER</i> legal entity that is a Party under this
+                                Agreement is not the same as the <i>SERVICE PROVIDER</i> as defined in the MSA, all
+                                references to <i>SERVICE PROVIDER</i> under the MSA shall be read as being references to
+                                the
+                                <i>SERVICE PROVIDER</i> legal entity under this Agreement, and the <i>SERVICE
+                                    PROVIDER</i>
+                                legal entity which entered into the Agreement shall be responsible for all
+                                obligations of the <i>SERVICE PROVIDER</i> under the MSA for the purposes of this
+
+                                Agreement.
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>BACKGROUND AND OVERVIEW
+                        <ul>
+                            <li>The <i>SERVICE PROVIDER</i> shall render a consulting role to <i>CLIENT</i>.</li>
+                            <li>The <i>SERVICE PROVIDER</i> is accountable for:
+                                <ul>
+                                    <li>The provision of <b>{{sow.role}}</b> services.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>SERVICES
+                        <ul>
+                            <li>The following are the Services to be provided by <i>SERVICE PROVIDER</i> under this
+
+                                Agreement:</li>
+                            <li>The <i>SERVICE PROVIDER</i> shall ensure that all its Staff performing Services in South
+                                Africa
+                                are eligible to work in South Africa and the cost of work permits and visas shall be for
+                                the account of the <i>SERVICE PROVIDER</i>.</li>
+                            <li>During the term of this Agreement, all persons rendering services on behalf
+                                of the <i>SERVICE PROVIDER</i> shall remain the <i>SERVICE PROVIDER</i>'s Staff. </li>
+                            <li>This Agreement will not be interpreted as creating the relationship of
+                                employer and employee between <i>CLIENT</i> and the <i>SERVICE PROVIDER</i>'s Staff. The
+                                <i>SERVICE PROVIDER</i> agrees that the provisions of the Labour Relations Act, 1995,
+                                and the Basic
+                                Conditions of Employment Act, 1997 do not and shall not apply to this
+                                Agreement.
+                            </li>
+                            <li style="break-after: always">The <i>SERVICE PROVIDER</i> shall be exclusively responsible
+                                for:
+                                <ul>
+                                    <li>satisfying any claims for wages, salaries, leave pay, bonuses and other
+                                        benefits, of the <i>SERVICE PROVIDER</i> Staff any other claims of its Staff,
+                                        including
+                                        claims by any one of them alleging an employment relationship with
+                                        <i>CLIENT</i>;
+                                    </li>
+                                    <li>the fulfilment of all obligations in terms of any Applicable Laws in respect of
+                                        its Staff;</li>
+                                    <li>the deduction of all applicable deductions required to be made in terms of any
+                                        laws from payments the <i>SERVICE PROVIDER</i> makes to its Staff, including,
+                                        but not
+                                        limited to PAYE (Pay-As-You-Earn); and</li>
+                                    <li>accounting to the appropriate bodies and authorities in respect of all
+                                        deductions made by the <i>SERVICE PROVIDER</i> from payments it makes to its
+                                        Staff,
+                                        including to applicable tax authorities.</li>
+                                </ul>
+                            </li>
+
+                            <!-- <div class="html2pdf__page-break"></div> -->
+
+                            <li style="break-before: always">In the event that any of the <i>SERVICE PROVIDER</i>'s
+                                Staff
+                                will be performing any of
+                                the
+                                activities comprising the Services on-site at <i>CLIENT</i>'s premises, the Parties
+                                shall,
+                                complete and maintain the Schedule of On-Site Resources ("SOSR"). The SOSR is not a
+                                contractual document and does not form party of the Agreement, and is merely a
+                                management tool to be used as part of the management of the Project. The form of the
+                                SOSR is set out in Appendix A to this Agreement. </li>
+                            <li>Assumptions and Dependencies
+                                <ul>
+                                    <li><i>CLIENT</i> shall cooperate with the <i>SERVICE PROVIDER</i> by providing
+                                        access to key
+                                        stakeholders and making available to the <i>SERVICE PROVIDER</i> in a reasonably
+                                        timely
+                                        fashion such related information and data required to execute and deliver the
+                                        Services. </li>
+                                    <li><i>SERVICE PROVIDER</i> shall, as soon as possible, notify <i>CLIENT</i>'s
+                                        relevant
+                                        project manager and/or Project Sponsors should <i>SERVICE PROVIDER</i> become
+                                        aware of
+                                        any non-compliance by <i>CLIENT</i> in respect of the assumptions, dependencies
+                                        or
+                                        specific <i>CLIENT</i> responsibilities so that same can be addressed and
+                                        resolved
+                                        by <i>CLIENT</i> within reasonable time.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>SERVICE LEVELS
+                        <ul>
+                            <li>The <i>SERVICE PROVIDER</i> shall perform the Services in accordance with the following
+                                Services Levels under this Agreement:
+                                <ul>
+                                    <li>The various aspects of the Services shall be undertaken under the
+                                        direction and supervision of the <i>CLIENT</i> team. Whilst the <i>SERVICE
+                                            PROVIDER</i>
+                                        shall perform internal QA to ensure that quality deliverables are issued in a
+                                        timely manner, <i>CLIENT</i> is ultimately responsible for the QA of all
+                                        deliverables developed as part of this engagement. </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>SUCCESS CRITERIA AND <i>CLIENT</i> KEY STAKEHOLDER GROUP
+                        <ul>
+                            <li>The Deliverables and outcomes as listed in the tables above shall be submitted to the
+                                Project Sponsor and key <i>CLIENT</i> Stakeholder Group (or their appointed designees)
+                                for
+                                review and approval. The formal acceptance and approval of the Deliverables and outcomes
+                                is a pre-requisite to the initiation of a next phase of work and/or to the payment of
+                                all invoices. </li>
+                            <li>The following stakeholders, or their designees, are the <i>CLIENT</i> Key Stakeholders
+                                who
+                                shall review and approve the Deliverables for this Agreement:
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{{sow.contactClient}}</td>
+                                            <td>{{sow.contactEmailClient}}</td>
+                                            <td>{{sow.contactPhoneClient}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>APPROACH, METHODOLOGIES AND STANDARDS
+                        <ul>
+                            <li>Approach
+                                <ul>
+                                    <li>The Services rendered under this Agreement shall be in
+                                        accordance
+                                        with the <i>CLIENT</i> project governance framework</li>
+                                </ul>
+                            </li>
+                            <li>Methodologies
+                                <ul>
+                                    <li>The Services rendered under this Agreement shall be in
+                                        accordance
+                                        with <i>CLIENT</i>'s methodologies</li>
+                                </ul>
+                            </li>
+                            <li>Standards
+                                <ul>
+                                    <li>The Services rendered under this Agreement shall adhere to
+                                        the
+                                        standards used by <i>CLIENT</i> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li style="break-after: always">PROJECT GOVERNANCE
+                        <ul>
+                            <li>The following Project governance process as described below shall be applied in
+                                respect
+                                of the Services provided under this Agreement:
+                                <ul>
+                                    <li>Compliance with <i>CLIENT</i>'s project governance framework and
+                                        methodologies</li>
+                                </ul>
+                            </li>
+                            <li>The following Project progress reporting shall be provided by the Service
+                                Provider under
+                                this Agreement:
+                                <ul>
+                                    <li>Weekly progress reporting to the Designated Manager</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- <div class="html2pdf__page-break"></div> -->
+
+                    <li style="break-before: always">EXPENSES
+                        <ul>
+                            <li>The following Expenses shall be chargeable under this Agreement:
+                                <ul>
+                                    <li>All travel costs approved and incurred shall comply with <i>CLIENT</i>'s
+                                        Travel
+                                        Policy.</li>
+                                    <li>Travel cost (air travel, car rental and accommodation) is not a
+                                        requirement for
+                                        this piece of work and is therefore not for the account of <i>CLIENT</i>
+                                        and is not
+                                        recoverable by the <i>SERVICE PROVIDER</i> for the purposes of the Services
+                                        rendered
+                                        under this Agreement.</li>
+                                    <li>Any unscheduled/special expense costs must receive written approval
+                                        prior to
+                                        commitment and being incurred, in accordance with the requirements of an
+                                        assignment/engagement.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>INVOICING AND PAYMENTS
+                        <ul>
+                            <li>Invoices shall be submitted to <i>CLIENT</i>'s Manager (or his/her
+                                designee
+                                appointed in writing) by the <i>SERVICE PROVIDER</i> on day <b>{{sow.dayNumber}}</b> of
+                                each month over
+                                the
+                                term of this Agreement and shall be paid by <i>CLIENT</i> within 7
+                                (seven) days
+                                from the date the invoice has been submitted to <i>CLIENT</i>'s
+                                Manager,
+                                subject to the Deliverables associated with that month being accepted as
+                                provided under
+                                this Agreement. All Invoices submitted for Services rendered under
+                                the terms
+                                of this Agreement shall be valid only if the associated Services
+                                and/or
+                                specific Deliverables have been approved as provided under this
+                                Agreement
+                                and the invoice contains at a minimum all of the following:
+                                <ul>
+                                    <li>Agreement number and Contract ID Number;</li>
+                                    <li>Summary level description of the billable Services and/or specific
+                                        Deliverables,
+                                    </li>
+                                    <li>The time period(s) applicable to the billable Services and/or specific
+                                        Deliverables.</li>
+                                </ul>
+                            </li>
+                            <li>Deliverables due in a given month or phase (as listed above in this
+                                Agreement) shall be reviewed by <i>CLIENT</i>'s Key Stakeholder Group (as described
+                                above)
+                                for approval at the end of that month or phase. If Deliverables are neither
+                                formally
+                                approved nor rejected within 10 (ten) days of the end of the month or phase to
+                                which
+                                they relate, then they shall be deemed to have been accepted and the associated
+                                payment
+                                will be due within 7 (seven) days from the date of receipt of the corresponding
+                                invoice.
+                            </li>
+                            <li>If there is only one Deliverable due in a given month or phase and that
+                                Deliverable is
+                                not accepted on reasonable grounds, then 50% (fifty percent) of that month or
+                                phase's
+                                invoice will be retained by <i>CLIENT</i>. If there is more than one Deliverable
+                                and only a
+                                proportion of those Deliverables are not accepted, then that same proportion of
+                                50%
+                                (fifty percent) of the invoice for that month will be retained by <i>CLIENT</i>. In
+                                any
+                                situation where one or more Deliverables are not accepted in a given month, the
+                                Service
+                                Provider will endeavour to rectify the underlying cause within 10 (ten) days and
+                                Old
+                                Mutual will approve any rectification within that same period of 10 (ten) days,
+                                at which
+                                point the withheld portion of the invoice will become due for payment within 30
+                                (thirty)
+                                days from the date of the receipt of the amended invoice.</li>
+                        </ul>
+                    </li>
+
+                    <li>DURATION FOR THIS AGREEMENT
+                        <ul>
+                            <li>This Agreement shall commence on <b>{{sow.dateStart | date:'longDate'}}</b>
+                                ("Commencement Date")
+                                and,
+                                unless otherwise agreed in Writing by both Parties, expire on <b>{{sow.dateEnd |
+                                    date:'longDate'}}</b>
+                                ("Expiry
+                                Date"). Any extension of this Agreement will be at the prior Written
+                                agreement of both Parties. </li>
+                        </ul>
+                    </li>
+
+                    <li style="break-after: always">TERMINATION
+                        <ul>
+                            <li>Notwithstanding anything to the contrary indicated elsewhere in this
+                                Agreement, <i>CLIENT</i> may at any time before the expiry of a period of 2 months
+                                calculated from the Commencement Date of this Agreement ("the
+                                Initial
+                                Period"), terminate for convenience and without cause this Agreement
+                                by
+                                merely giving 10 (ten) Days Written notice of such termination to the Service
+                                Provider
+                                within the Initial Period. The Parties agree that this termination for
+                                convenience
+                                clause meets the commercial needs of both Parties and is a material provision of
+                                this
+                                Agreement.</li>
+                            <li>Upon expiry of the Initial Period and at any point during the duration of this
+                                Agreement, <i>CLIENT</i> may terminate this Agreement for
+                                convenience and without cause by merely giving 30 Days Written notice of such
+                                termination to the <i>SERVICE PROVIDER</i>.</li>
+                            <li>Termination exercised in terms of the 2 clauses above shall not entitle Service
+                                Provider to claim any break-option or penalty fees. Unless agreed otherwise in
+                                Writing,
+                                <i>SERVICE PROVIDER</i> shall be entitled to Fees incurred until expiry date of the
+                                termination
+                                notice period.
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- <div class="html2pdf__page-break"></div> -->
+
+                    <li style="break-before: always">MANAGER
+                        <ul>
+                            <li>The Managers, being the designated representatives of each Party
+                                under this
+                                Agreement, shall be:
+                                <ul>
+                                    <li><i>CLIENT</i>
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{sow.contactClient}}</td>
+                                                    <td>{{sow.contactEmailClient}}</td>
+                                                    <td>{{sow.contactPhoneClient}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                    <li><i>SERVICE PROVIDER</i>
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Anton de Jager</td>
+                                                    <td>anton@loadgistix.com</td>
+                                                    <td>064 506 5810</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+                <div class="mt-8">
+                    <div class="grid grid-cols-12 gap-x-1 mt-32">
+                        <div class="col-span-4 self-center text-left"><b>Signature:</b> _____________________________
+                        </div>
+                        <div class="col-span-4 self-center text-left"></div>
+                        <div class="col-span-4 self-center text-right"><b>Date:</b> ______________________________
+                        </div>
+                        <div class="col-span-12 my-3">Signed for and on behalf of <b><i>CLIENT</i></b></div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <div class="grid grid-cols-12 gap-x-1 mt-32">
+                        <div class="col-span-4 self-center text-left"><b>Signature:</b> _____________________________
+                        </div>
+                        <div class="col-span-4 self-center text-left"></div>
+                        <div class="col-span-4 self-center text-right"><b>Date:</b> ______________________________
+                        </div>
+                        <div class="col-span-12 my-3">Signed for and on behalf of <b><i>SERVICE PROVIDER</i></b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- <br>
+<div style="display: flex">
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-raised-button [color]="'primary'" (click)="print()">Print</button>
+</div> -->

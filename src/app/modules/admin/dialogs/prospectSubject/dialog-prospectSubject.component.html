@@ -1,0 +1,31 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Subject</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Description</mat-label><input type='text' matInput placeholder='Description' formControlName='description' id='description'>
+          <mat-error>Description is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Level</mat-label><input type='text' matInput placeholder='Level' formControlName='level' id='level'>
+          <mat-error>Level is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Result</mat-label><input type='text' matInput placeholder='Result' formControlName='result' id='result'>
+          <mat-error>Result is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" [mat-dialog-close]="form.value" [disabled]="!form.valid">Submit</button>
+</div>

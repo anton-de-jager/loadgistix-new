@@ -1,0 +1,100 @@
+<div class="w-full">
+
+    <!-- Form -->
+    <form [formGroup]="accountForm">
+
+        <!-- Section -->
+        <div class="w-full">
+            <div class="text-xl">Profile</div>
+        </div>
+        <div class="grid sm:grid-cols-4 gap-6 w-full mt-8">
+
+            <div class="sm:col-span-4">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Company Name</mat-label>
+                    <input id="company" matInput [formControlName]="'company'">
+                    <mat-error *ngIf="accountForm.get('company').hasError('required')">
+                        Company is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>First Name</mat-label>
+                    <input id="firstName" matInput [formControlName]="'firstName'">
+                    <mat-error *ngIf="accountForm.get('firstName').hasError('required')">
+                        First Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input id="lastName" matInput [formControlName]="'lastName'">
+                    <mat-error *ngIf="accountForm.get('lastName').hasError('required')">
+                        Last Name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Phone Number</mat-label>
+                    <input id="phone" matInput [formControlName]="'phone'">
+                    <mat-error *ngIf="accountForm.get('phone').hasError('required')">
+                        Phone Number is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="sm:col-span-2">
+                <mat-form-field class="fuse-mat-no-subscript w-full">
+                    <mat-label>Email address</mat-label>
+                    <input id="email" matInput [formControlName]="'email'">
+                    <mat-error *ngIf="accountForm.get('email').hasError('required')">
+                        Email address is required
+                    </mat-error>
+                    <mat-error *ngIf="accountForm.get('email').hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+            </div>
+                        
+            <div class="sm:col-span-4" fxLayout fxLayoutAlign="center center"
+                    style="cursor: pointer; text-align: center;">
+                <div fxFlex fxLayout="column">
+                    <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+                        <button mat-flat-button color="primary" (click)="captureImage()"
+                            style="margin-left: 2px; margin-right: 2px;">Upload
+                            Image</button>
+                    </div>
+                    <div fxFlex fxLayout="row" fxLayoutAlign="center center" style="margin-top:4px">
+                        <img *ngIf="previewImage"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="previewImage" class="image" (click)="captureImage()" />
+                        <img *ngIf="!previewImage && accountForm.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="imagesFolder + 'Users/' + accountForm.value.id + accountForm.value.avatar + '?t=' + timestamp"
+                            class="image" (click)="captureImage()" />
+                        <img *ngIf="!previewImage && !accountForm.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            src="assets/images/no-image.jpg" class="image" (click)="captureImage()" />
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <hr>
+        <!-- Actions -->
+        <div class="flex items-center justify-end">
+            <fuse-alert *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false" [type]="alert.type">
+                {{alert.message}}
+            </fuse-alert>
+            <button class="ml-4" mat-flat-button type="button" [color]="'primary'" (click)="save()" [disabled]="!accountForm.valid">Save
+            </button>
+        </div>
+    </form>
+
+</div>

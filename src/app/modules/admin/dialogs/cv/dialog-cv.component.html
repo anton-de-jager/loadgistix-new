@@ -1,0 +1,152 @@
+<div mat-dialog-content>
+
+  <div id="divPrint" *ngIf="prospect!==undefined" class="inset-0 min-w-0 text-center overflow-auto print:overflow-visible"
+    cdkScrollable>
+    <div class="inline-block p-0 sm:p-0 text-left print:p-0">
+      <div
+        class="w-240 p-16 rounded-2xl shadow bg-card print:w-auto print:rounded-none print:shadow-none print:bg-transparent">
+
+        <div class="flex items-start justify-between">
+          <div class="grid grid-cols-1 gap-x-4 gap-y-1">
+            <div class="text-4xl tracking-tight text-secondary mt-6"><b>Cirriculum Vitae</b></div>
+            <div class="font-medium tracking-tight text-secondary text-center">of</div>
+            <div class="text-4xl tracking-tight text-secondary">
+              {{prospect.name}}&nbsp;{{prospect.surname}}
+            </div>
+          </div>
+          <div class="grid auto-cols-max grid-flow-col gap-x-8 -mr-16 py-6 px-8 rounded-l-2xl bg-accent dark">
+            <div class="place-self-center w-24">
+              <img class="w-24" src="assets/images/logo/logoWhite.png">
+            </div>
+            <div class="pl-10 border-l text-md">
+              <div class="font-medium">Loadgistix (Pty) Ltd</div>
+              <div>Reg #: 2021/580536/07</div>
+              <div>VAT #: Pending</div>
+              <div>14 Judy Street, Brackenhurst, Alberton, 1447</div>
+              <div>info@loadgistix.com</div>
+              <div>app.loadgistix.com</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-md mt-8">
+          <div class="grid grid-cols-1 gap-x-1">
+            <div class="my-3 border-b"></div>
+            <div class="text-xl tracking-tight text-secondary"><b>PERSONAL DETAILS:</b></div>
+            <div class="my-3 border-b"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-1">
+            <div class="tracking-tight text-secondary"><b>Full Name & Surname:</b></div>
+            <div class="tracking-tight text-secondary">
+              {{prospect.name}}&nbsp;{{prospect.surname}}</div>
+            <div class="tracking-tight text-secondary"><b>Languages:</b></div>
+            <div class="tracking-tight text-secondary"><span
+                *ngFor="let languageItem of prospect.languageItems; last as isLast">{{languageItem.description}}<span
+                  *ngIf="!isLast">,</span>&nbsp;</span>
+            </div>
+            <div class="tracking-tight text-secondary"><b>ID Number:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.idNumber}}</div>
+            <div class="tracking-tight text-secondary"><b>Area of Residence:</b></div>
+            <div class="tracking-tight text-secondary">
+              {{prospect.address1}},&nbsp;{{prospect.address2}},&nbsp;{{prospect.addressCity}},&nbsp;{{prospect.addressProvince}},&nbsp;{{prospect.addressCountry}}&nbsp;
+            </div>
+            <div class="tracking-tight text-secondary"><b>EE Profile:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.equity}}</div>
+            <div class="tracking-tight text-secondary"><b>Nationality:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.nationality}}</div>
+            <div class="tracking-tight text-secondary"><b>Transport:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.transport}}</div>
+            <div class="tracking-tight text-secondary"><b>Availability:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.availability}}</div>
+            <div class="tracking-tight text-secondary"><b>Role:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.role}}</div>
+          </div>
+        </div>
+
+        <div class="text-md mt-8" style="page-break-after: always">
+          <div class="grid grid-cols-1 gap-x-1">
+            <div class="my-3 border-b"></div>
+            <div class="text-xl tracking-tight text-secondary"><b>EDUCATION:</b></div>
+            <div class="my-3 border-b"></div>
+          </div>
+          <div class="grid grid-cols-2 gap-x-2 gap-y-1">
+            <div class="tracking-tight text-secondary"><b>School Attended:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.educationSchool}}</div>
+            <div class="tracking-tight text-secondary"><b>Highest Grade Passed:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.educationHighestGrade}}</div>
+            <div class="tracking-tight text-secondary"><b>Year Completed:</b></div>
+            <div class="tracking-tight text-secondary">{{prospect.educationYearCompleted}}
+            </div>
+            <div class="tracking-tight text-secondary"><b>Subjects:</b></div>
+            <div class="grid grid-cols-1 gap-x-2 gap-y-1">
+              <div *ngFor="let educationSchoolSubjectItem of prospect.subjectItems"
+                class="tracking-tight text-secondary">
+                {{educationSchoolSubjectItem.description}}&nbsp;({{educationSchoolSubjectItem.level}})&nbsp;-&nbsp;{{educationSchoolSubjectItem.result}}
+              </div>
+            </div>
+
+            <ng-container>
+              <ng-container *ngFor="let educationTertiaryItem of prospect.tertiaryItems">
+                <div class="my-3 border-b col-span-2"></div>
+                <div class="tracking-tight text-secondary"><b>Institute:</b></div>
+                <div class="tracking-tight text-secondary">{{educationTertiaryItem.description}}</div>
+                <div class="tracking-tight text-secondary"><b>Course:</b></div>
+                <div class="tracking-tight text-secondary">{{educationTertiaryItem.course}}</div>
+                <div class="tracking-tight text-secondary"><b>Year Completed:</b></div>
+                <div class="tracking-tight text-secondary">{{educationTertiaryItem.yearCompleted}}</div>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="text-md mt-8">
+          <div class="grid grid-cols-1 gap-x-1">
+            <div class="my-3 border-b"></div>
+            <div class="text-xl tracking-tight text-secondary"><b>EMPLOYMENT HISTORY:</b></div>
+
+            <ng-container>
+              <div class="grid grid-cols-2 gap-x-2 gap-y-1"
+                *ngFor="let employmentHistoryItem of prospect.employmentItems">
+                <div class="my-3 border-b col-span-2"></div>
+                <div class="tracking-tight text-secondary"><b>Company:</b></div>
+                <div class="tracking-tight text-secondary">{{employmentHistoryItem.description}}</div>
+                <div class="tracking-tight text-secondary"><b>Position:</b></div>
+                <div class="tracking-tight text-secondary">{{employmentHistoryItem.position}}</div>
+                <div class="tracking-tight text-secondary"><b>Period:</b></div>
+                <div class="tracking-tight text-secondary">
+                  {{employmentHistoryItem.dateStart | date:'longDate'}}&nbsp;-&nbsp;<span
+                    *ngIf="employmentHistoryItem.dateEnd">{{employmentHistoryItem.dateEnd |
+                    date:'longDate'}}</span><span *ngIf="!employmentHistoryItem.dateEnd">Current</span>
+                </div>
+                <div class="tracking-tight text-secondary"><b>Duties & Responsibilities:</b></div>
+                <div>
+                  <ul>
+                    <li style="list-style-type: disc!important;"
+                      *ngFor="let dutyItem of employmentHistoryItem.dutyItems" class="text-secondary">
+                      {{dutyItem.description}}
+                    </li>
+                  </ul>
+                </div>
+                <div class="tracking-tight text-secondary"><b>Technologies Used:</b></div>
+                <div class="tracking-tight text-secondary"><span
+                    *ngFor="let technologyItem of employmentHistoryItem.technologyItems; last as isLast">{{technologyItem.description}}<span
+                      *ngIf="!isLast">,</span>&nbsp;</span>
+                </div>
+                <div class="tracking-tight text-secondary"><b>Reason for Leaving:</b></div>
+                <div class="tracking-tight text-secondary">{{employmentHistoryItem.reasonForLeaving}}</div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="default" (click)="onYesClick()">Print</button>
+  <button mat-raised-button color="accent" (click)="onNoClick()">Done</button>
+</div>

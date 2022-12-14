@@ -1,0 +1,5 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target" : { "namespace": "android_app", "package_name": "com.loadgistix.www",
+                 "sha256_cert_fingerprints": ["4A:EF:A1:D5:1F:C3:62:AC:30:E1:DA:10:F1:6E:DE:EC:AD:71:D6:30:B1:7E:B1:15:3C:6C:B4:96:E9:FC:14:B9"] }
+  }]

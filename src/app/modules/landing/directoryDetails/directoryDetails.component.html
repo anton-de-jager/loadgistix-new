@@ -1,0 +1,129 @@
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+
+    <!-- Header -->
+    <div fxLayout="row" fxLayoutAlign="space-between center"
+        class="relative flex w-full h-16 sm:h-20 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b bg-card dark:bg-transparent print:hidden">
+        <div class="mx-2 lg:mr-8">
+            <!-- <img class="w-8" [src]="'assets/images/logo/logo.png'" alt="Logo image"> -->
+            <img class="dark:hidden h-10" src="assets/images/logo/logo.png" style="cursor:pointer"
+                (click)="buttonClick('')" alt="Logo image">
+            <!-- Dark version -->
+            <img class="hidden dark:flex h-10" src="assets/images/logo/logoWhite.png" style="cursor:pointer"
+                (click)="buttonClick('')" alt="Logo image">
+        </div>
+        <button mat-raised-button (click)="buttonClick('sign-in')">
+            <mat-icon svgIcon="mat_solid:login"></mat-icon>
+            &nbsp;Sign In
+        </button>
+    </div>
+
+    <!-- Content -->
+    <div class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+        <div class="flex flex-col flex-auto min-w-0">
+
+
+            <div class="page-layout blank p-4" fusePerfectScrollbar>
+                <div class="grid grid-cols-1 sm:grid-cols-6 gap-6 w-full min-w-0">
+                    <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden"
+                        style="padding: 0!important">
+                        <div fxLayout="row" fxLayoutAlign="space-between center" class="mb-4">
+                            <div
+                                class="text-xl md:text-2xl font-semibold tracking-tight leading-7 md:leading-snug truncate">
+                                {{directoryCategoryDescription}}</div>
+                            <button mat-raised-button (click)="back()">
+                                <mat-icon svgIcon="arrow_back"></mat-icon>
+                                &nbsp;Back
+                            </button>
+                        </div>
+                        <div class="table-container bg-card shadow rounded-2xl">
+                            <app-map *ngIf="directoryItems.length > 0" [directoryList]="directoryItems"
+                                (select)="showItem($event)">
+                            </app-map>
+                        </div>
+                        <br>
+                        <mat-card *ngFor="let directoryItem of directoryItems"
+                            class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hiddenmat-elevation-z5"
+                            style="padding: 4px!important;margin-bottom: 12px;">
+                            <mat-card-content>
+                                <div fxFlex fxLayout="row wrap">
+                                    <img *ngIf="screenSize>800 && directoryItem.avatar" mat-card-md-image
+                                        [src]="imagesFolder + 'Directories/' + directoryItem.id + directoryItem.avatar + '?t=' + timestamp">
+                                    <img *ngIf="screenSize>800 && !directoryItem.avatar" mat-card-md-image
+                                        src="assets/images/no-image.jpg">
+                                    <div fxFlex fxLayout="column">
+                                        <div fxFlex fxLayout="row wrap">
+                                            <h2
+                                                class="text-secondary text-xl md:text-2xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                                                {{directoryItem.companyName}}</h2>
+                                        </div>
+                                        <div fxFlex fxLayout="column" fxLayout.gt-sm="row wrap"
+                                            style="margin-bottom: 4px;">
+                                            <span fxFlex fxLayout="row">
+                                                <img class="image-icon" src="assets/icons/location.png" alt="">
+                                                <span>{{getAddressSubstring(directoryItem.addressLabel, ',')}}</span>
+                                            </span>
+                                        </div>
+                                        <div fxFlex fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign=" start"
+                                            fxLayoutAlign.gt-sm="space-around center" style="margin-bottom: 4px;">
+                                            <span fxFlex fxLayout="row">
+                                                <img class="image-icon" src="assets/icons/phone.png" alt="">
+                                                <a href="tel:{{directoryItem.phone}}"
+                                                    class="directory">{{directoryItem.phone}}
+                                                </a>
+                                            </span>
+                                            <span fxFlex fxLayout="row">
+                                                <img class="image-icon" src="assets/icons/email.png" alt="">
+                                                <a href="mailto:{{directoryItem.email}}"
+                                                    class="directory">{{directoryItem.email}}</a>
+                                            </span>
+                                            <span fxFlex fxLayout="row">
+                                                <img class="image-icon" src="assets/icons/website.png" alt="">
+                                                <a href
+                                                    (click)="navigateExternal($event, directoryItem.website.substring(0, 4) === 'http' ? directoryItem.website : 'https://' + directoryItem.website)"
+                                                    class="directory">{{directoryItem.website}}</a>
+                                            </span>
+                                        </div>
+                                        <div fxFlex fxLayout="column" fxLayout.gt-sm="row wrap" fxLayoutAlign=" start"
+                                            fxLayoutAlign.gt-sm="space-around center" style="margin-bottom: 12px;">
+                                            <span fxFlex fxLayout="row" *ngIf="directoryItem.facebook">
+                                                <img class="image-icon" src="assets/icons/facebook.png" alt="">
+                                                <a href (click)="navigateExternal($event, directoryItem.facebook)"
+                                                    class="directory">{{directoryItem.facebook.replace('https://www.facebook.com/',
+                                                    '')}}</a>
+                                            </span>
+                                            <span fxFlex fxLayout="row" *ngIf="directoryItem.twitter">
+                                                <img class="image-icon" src="assets/icons/twitter.png" alt="">
+                                                <a href (click)="navigateExternal($event, directoryItem.twitter)"
+                                                    class="directory">{{directoryItem.twitter.replace('https://twitter.com/',
+                                                    '')}}</a>
+                                            </span>
+                                            <span fxFlex fxLayout="row" *ngIf="directoryItem.instagram">
+                                                <img class="image-icon" src="assets/icons/instagram.png" alt="">
+                                                <a href (click)="navigateExternal($event, directoryItem.instagram)"
+                                                    class="directory">{{directoryItem.instagram.replace('https://twitter.com/',
+                                                    '')}}</a>
+                                            </span>
+                                        </div>
+                                        <p class="directory">
+                                            {{directoryItem.description}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="sm:col-span-2 lg:col-span-2 flex flex-col flex-auto p-6 overflow-hidden"
+                        style="padding: 0!important">
+                        <advert></advert>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="relative flex flex-0 items-center w-full h-14 sm:h-20 px-4 md:px-6 z-49 border-t bg-card dark:bg-transparent print:hidden">
+        <span class="font-medium text-secondary">Loadgistix &copy; {{currentYear}}</span>
+    </div>
+</div>

@@ -1,0 +1,119 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Statement of Work</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Client</mat-label>
+          <mat-select placeholder="Client" formControlName="clientId">
+            <mat-option *ngFor="let clientItem of clientItems" [value]="clientItem.id">
+              {{clientItem.description}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Client is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Prospect</mat-label>
+          <mat-select placeholder="Prospect" formControlName="prospectId">
+            <mat-option *ngFor="let prospectItem of prospectItems" [value]="prospectItem.id">
+              {{prospectItem.surname}}, {{prospectItem.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Prospect is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Role</mat-label><input type='text' matInput placeholder='Role' formControlName='role' id='role'>
+          <mat-error>Role is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Location</mat-label><input type='text' matInput placeholder='Location' formControlName='location'
+            id='location'>
+          <mat-error>Location is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Start Date</mat-label>
+          <input matInput [matDatepicker]="pickerDateStart" formControlName="dateStart">
+          <mat-datepicker-toggle matSuffix [for]="pickerDateStart"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDateStart></mat-datepicker>
+          <mat-error>Start Date is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>End Date</mat-label>
+          <input matInput [matDatepicker]="pickerDateEnd" formControlName="dateEnd">
+          <mat-datepicker-toggle matSuffix [for]="pickerDateEnd"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDateEnd></mat-datepicker>
+          <mat-error>End Date is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Hourly Rate (Client)</mat-label><input type='number' matInput placeholder='Hourly Rate (Client)'
+            formControlName='hourlyRateClient' id='hourlyRateClient'>
+          <mat-error>Hourly Rate (Client) is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Hourly Rate (Prospect)</mat-label><input type='number' matInput
+            placeholder='Hourly Rate (Prospect)' formControlName='hourlyRateProspect' id='hourlyRateProspect'>
+          <mat-error>Hourly Rate (Prospect) is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Contract Date (Client)</mat-label>
+          <input matInput [matDatepicker]="pickerContractClient" formControlName="dateContractClient">
+          <mat-datepicker-toggle matSuffix [for]="pickerContractClient"></mat-datepicker-toggle>
+          <mat-datepicker #pickerContractClient></mat-datepicker>
+          <mat-error>Contract Date (Client) is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Contract Date (Prospect)</mat-label>
+          <input matInput [matDatepicker]="pickerContractProspect" formControlName="dateContractProspect">
+          <mat-datepicker-toggle matSuffix [for]="pickerContractProspect"></mat-datepicker-toggle>
+          <mat-datepicker #pickerContractProspect></mat-datepicker>
+          <mat-error>Contract Date (Prospect) is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Document Number (Client)</mat-label><input type='text' matInput placeholder='Document Number (Client)'
+            formControlName='documentNumberClient' id='documentNumberClient'>
+          <mat-error>Document Number (Client) is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Document Number (Prospect)</mat-label><input type='text' matInput placeholder='Document Number (Prospect)'
+            formControlName='documentNumberProspect' id='documentNumberProspect'>
+          <mat-error>Document Number (Prospect) is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" [mat-dialog-close]="form.value" [disabled]="!form.valid">Submit</button>
+</div>

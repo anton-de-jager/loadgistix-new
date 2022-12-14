@@ -1,0 +1,96 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{data.title}}&nbsp;Timesheet</h1>
+<div mat-dialog-content fxLayout="column">
+  <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+    [formGroup]="form" novalidate>
+    <div fxLayout="row wrap" style="width:100%">
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance='outline' style='width:100%'>
+          <mat-label>Prospect</mat-label>
+          <mat-select placeholder="Prospect" formControlName="prospectId">
+            <mat-option *ngFor="let prospectItem of data.prospectItems" [value]="prospectItem.id">
+              {{prospectItem.surname}}, {{prospectItem.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Prospect is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+        <mat-form-field appearance="outline" style='width:100%'>
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="pickerDate" formControlName="timesheetDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDate startView="multi-year" (yearSelected)="chosenYearHandler($event)"
+            (monthSelected)="chosenMonthHandler($event, pickerDate)" panelClass="example-month-picker">
+          </mat-datepicker>
+          <style>
+            .example-month-picker .mat-calendar-period-button {
+              pointer-events: none;
+            }
+
+            .example-month-picker .mat-calendar-arrow {
+              display: none;
+            }
+          </style>
+
+          <!-- <input matInput [matDatepicker]="pickerDate" formControlName="timesheetDate">
+          <mat-datepicker-toggle matSuffix [for]="pickerDate"></mat-datepicker-toggle>
+          <mat-datepicker #pickerDate></mat-datepicker> -->
+          <mat-error>Date is required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <div fxLayout="row wrap" style="width:100%">
+    <!-- <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+      <mat-form-field appearance='outline' style='width:100%'>
+        <mat-label>Year</mat-label>
+        <mat-select placeholder="Year" [(ngModel)]="year" (selectionChange)="selectYear($event)">
+          <mat-option *ngFor="let yearItem of yearItems" [value]="yearItem.id">
+            {{yearItem.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxFlex='100' fxFlex.gt-xs='50' class='p-2'>
+      <mat-form-field appearance='outline' style='width:100%'>
+        <mat-label>Month</mat-label>
+        <mat-select placeholder="Month" [(ngModel)]="month" (selectionChange)="selectMonth($event)">
+          <mat-option *ngFor="let monthItem of monthItems" [value]="monthItem.id">
+            {{monthItem.description}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> -->
+    <ng-container *ngFor="let timesheetItem of timesheetItems">
+      <div fxFlex='100' fxFlex.gt-xs='25' class='mt-6 pr-2'>
+        {{timesheetItem.taskDate | date:'longDate'}}
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='25'>
+        <mat-form-field appearance='outline' style='width:100%; height: 55px!important;'>
+          <mat-label>Description</mat-label>
+          <input type='text' matInput placeholder='Description' [(ngModel)]="timesheetItem.description">
+          <mat-error>Description is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='25'>
+        <mat-form-field appearance='outline' style='width:100%; height: 55px!important;'>
+          <mat-label>Regular Hours</mat-label>
+          <input type='number' matInput placeholder='Regular Hours' [(ngModel)]="timesheetItem.hoursRegular">
+          <mat-error>Regular Hours is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex='100' fxFlex.gt-xs='25'>
+        <mat-form-field appearance='outline' style='width:100%; height: 55px!important;'>
+          <mat-label>Overtime Hours</mat-label>
+          <input type='number' matInput placeholder='Overtime Hours' [(ngModel)]="timesheetItem.hoursOvertime">
+          <mat-error>Overtime Hours is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </ng-container>
+  </div>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+  <span style="flex: 1 1 auto;"></span>
+  <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button [color]="'primary'" (click)="onYesClick()" [disabled]="!form.valid">Submit</button>
+</div>

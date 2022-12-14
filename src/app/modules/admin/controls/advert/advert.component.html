@@ -1,0 +1,33 @@
+<ng-container *ngIf="advertItems.length > 0">
+  <mat-card *ngFor="let advertItem of advertItems"
+    class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden" style="margin-bottom: 12px;">
+    <mat-card-title-group>
+      <mat-card-title style="font-size: 18px;">{{advertItem.title}}</mat-card-title>
+      <mat-card-subtitle>{{advertItem.subTitle}}</mat-card-subtitle>
+      <!-- <img *ngIf="advertItem.avatar" mat-card-sm-image class="advert-image"
+      [src]="imagesFolder + 'Adverts/' + advertItem.id + advertItem.avatar + '?t=' + timestamp"> -->
+    </mat-card-title-group>
+    <div fxLayout="row" fxLayoutAlign="space-around center" style="margin-top: 14px;" >
+      <img *ngIf="advertItem.avatar" mat-card-image
+        [src]="imagesFolder + 'Adverts/' + advertItem.id + advertItem.avatar + '?t=' + timestamp" alt="Image"
+        class="advert-image">
+    </div>
+    <mat-card-content>
+      {{advertItem.content}}<br><br>
+      <a href
+        (click)="navigateExternal($event, advertItem.link.substring(0,4)=='http'?advertItem.link:'https://'+advertItem.link)">{{advertItem.link}}</a>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<mat-card *ngIf="advertItems.length === 0"
+  class="flex flex-col flex-auto p-6 bg-card shadow rounded-2xl overflow-hidden" style="margin-bottom: 12px;">
+  <mat-card-title-group>
+    <mat-card-title style="font-size: 18px;">Loadgistix</mat-card-title>
+    <mat-card-subtitle>Get more</mat-card-subtitle>
+  </mat-card-title-group>
+  <img mat-card-sm-image class="advert-image" src="assets/images/no-image.jpg" class="advert-image">
+  <mat-card-content>
+    Contact us today - we will show you how to get the best out of Loadgistix!
+  </mat-card-content>
+</mat-card>

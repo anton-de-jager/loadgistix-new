@@ -1,0 +1,273 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <div class="page-layout blank p-4" fusePerfectScrollbar>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Vehicle Categories
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="standard">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilterVehicleCategories($event)" placeholder="Filter" #inputVehicleCategories>
+                </mat-form-field>
+                <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden"
+                    style="padding: 0!important">
+                    <div class="table-container bg-card shadow rounded-2xl">
+                        <mat-card class="mat-elevation-z5" style="padding: 4px!important;">
+                            <table mat-table [dataSource]="dataSourceVehicleCategories" matSortActive="description" matSortDirection="asc" #sortVehicleCategories='matSort' matSort>
+                                <ng-container matColumnDef="cud">
+                                    <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertVehicleCategory(null)" matTooltip="Add Vehicle Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">add</mat-icon>
+                                        </button></th>
+                                    <td mat-cell *matCellDef="let row" class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertVehicleCategory(row)" matTooltip="Update Vehicle Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">edit</mat-icon>
+                                        </button><button mat-icon-button color="default"
+                                            (click)="initDeleteVehicleCategory(row.id)" matTooltip="Remove Vehicle Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">delete</mat-icon>
+                                        </button></td>
+                                </ng-container>
+                                <ng-container matColumnDef="description">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="description">Description</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.description}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsVehicleCategories; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumnsVehicleCategories;"></tr>
+                            </table>
+                            <mat-paginator #paginatorVehicleCategories='matPaginator' [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [disabled]="loading">
+                            </mat-paginator>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Vehicle Types
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="standard">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilterVehicleTypes($event)" placeholder="Filter" #inputVehicleTypes>
+                </mat-form-field>
+                <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden"
+                    style="padding: 0!important">
+                    <div class="table-container bg-card shadow rounded-2xl">
+                        <mat-card class="mat-elevation-z5" style="padding: 4px!important;">
+                            <table mat-table [dataSource]="dataSourceVehicleTypes" matSortActive="vehicleCategoryDescription" matSortDirection="asc" #sortVehicleTypes='matSort' matSort>
+                                <ng-container matColumnDef="cud">
+                                    <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertVehicleType(null)" matTooltip="Add Vehicle Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">add</mat-icon>
+                                        </button></th>
+                                    <td mat-cell *matCellDef="let row" class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertVehicleType(row)" matTooltip="Update Vehicle Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">edit</mat-icon>
+                                        </button><button mat-icon-button color="default"
+                                            (click)="initDeleteVehicleType(row.id)" matTooltip="Remove Vehicle Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">delete</mat-icon>
+                                        </button></td>
+                                </ng-container>
+                                <ng-container matColumnDef="vehicleCategoryDescription">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="vehicleCategoryDescription">Category</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.vehicleCategory ? row.vehicleCategory.description : ''}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="description">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="description">Description</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.description}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="liquid">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="liquid">Is Liquid</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.liquid}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsVehicleTypes; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumnsVehicleTypes;"></tr>
+                            </table>
+                            <mat-paginator #paginatorVehicleTypes='matPaginator' [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [disabled]="loading">
+                            </mat-paginator>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Load Categories
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="standard">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilterLoadCategories($event)" placeholder="Filter" #inputLoadCategories>
+                </mat-form-field>
+                <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden"
+                    style="padding: 0!important">
+                    <div class="table-container bg-card shadow rounded-2xl">
+                        <mat-card class="mat-elevation-z5" style="padding: 4px!important;">
+                            <table mat-table [dataSource]="dataSourceLoadCategories" matSortActive="description" matSortDirection="asc" #sortLoadCategories='matSort' matSort>
+                                <ng-container matColumnDef="cud">
+                                    <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertLoadCategory(null)" matTooltip="Add Load Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">add</mat-icon>
+                                        </button></th>
+                                    <td mat-cell *matCellDef="let row" class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertLoadCategory(row)" matTooltip="Update Load Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">edit</mat-icon>
+                                        </button><button mat-icon-button color="default"
+                                            (click)="initDeleteLoadCategory(row.id)" matTooltip="Remove Load Category"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">delete</mat-icon>
+                                        </button></td>
+                                </ng-container>
+                                <ng-container matColumnDef="loadCategoryDescription">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="loadCategoryDescription">Category</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.loadCategory ? row.loadCategory.description : ''}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="description">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="description">Description</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.description}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="liquid">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="liquid">Is Liquid</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.liquid}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsLoadCategories; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumnsLoadCategories;"></tr>
+                            </table>
+                            <mat-paginator #paginatorLoadCategories='matPaginator' [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [disabled]="loading">
+                            </mat-paginator>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Load Types
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-form-field appearance="standard">
+                    <mat-label>Filter</mat-label>
+                    <input matInput (keyup)="applyFilterLoadTypes($event)" placeholder="Filter" #inputLoadTypes>
+                </mat-form-field>
+                <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden"
+                    style="padding: 0!important">
+                    <div class="table-container bg-card shadow rounded-2xl">
+                        <mat-card class="mat-elevation-z5" style="padding: 4px!important;">
+                            <table mat-table [dataSource]="dataSourceLoadTypes" matSortActive="loadCategoryDescription" matSortDirection="asc" #sortLoadTypes='matSort' matSort>
+                                <ng-container matColumnDef="cud">
+                                    <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertLoadType(null)" matTooltip="Add Load Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">add</mat-icon>
+                                        </button></th>
+                                    <td mat-cell *matCellDef="let row" class="cudColumnExtra ml-0 pl-12"
+                                        style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                            (click)="initUpsertLoadType(row)" matTooltip="Update Load Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">edit</mat-icon>
+                                        </button><button mat-icon-button color="default"
+                                            (click)="initDeleteLoadType(row.id)" matTooltip="Remove Load Type"
+                                            [disabled]="loading">
+                                            <mat-icon class="fab-icon">delete</mat-icon>
+                                        </button></td>
+                                </ng-container>
+                                <ng-container matColumnDef="loadCategoryDescription">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="loadCategoryDescription">Category</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.loadCategory ? row.loadCategory.description : ''}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="description">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="description">Description</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.description}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="liquid">
+                                    <th mat-header-cell *matHeaderCellDef>
+                                        <p class="table-header" mat-sort-header="liquid">Is Liquid</p>
+                                    </th>
+                                    <td mat-cell *matCellDef="let row" class="table-cell"> {{row.liquid}} </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumnsLoadTypes; sticky: true"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumnsLoadTypes;"></tr>
+                            </table>
+                            <mat-paginator #paginatorLoadTypes='matPaginator' [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" [disabled]="loading">
+                            </mat-paginator>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Licence Types
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Directory Categories
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Advert Packages
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Notification Channels
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel> -->
+        </mat-accordion>
+    </div>
+</div>

@@ -1,0 +1,164 @@
+<div class="w-full">
+
+    <button #activateButton type="button" (click)="activate()" style="position: fixed;">
+    </button>
+
+    <mat-accordion>
+        <mat-expansion-panel class="mb-4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="text-2xl font-bold">Vehicles</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 w-full min-w-0">
+                <mat-card (click)="onSelectCardVehicle(1)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedVehicle1} ">
+                    <!-- <span [matTooltip]="selectedVehicle1 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R159.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>1 Vehicle</b>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card (click)="onSelectCardVehicle(5)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedVehicle5} ">
+                    <!-- <span [matTooltip]="selectedVehicle5 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R600.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Up To 5 Vehicles</b>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card (click)="onSelectCardVehicle(10)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedVehicle10} ">
+                    <!-- <span [matTooltip]="selectedVehicle10 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R975.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Up To 10 Vehicles</b>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card (click)="onSelectCardVehicle(11)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedVehicle11} ">
+                    <!-- <span [matTooltip]="selectedVehicle11 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R2,250.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Unlimited Vehicles</b>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mb-4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="text-2xl font-bold">Loads</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full min-w-0">
+                <mat-card (click)="onSelectCardLoad(5)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedLoad5} ">
+                    <!-- <span [matTooltip]="selectedLoad5 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R300.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Up To 5 Loads</b>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card (click)="onSelectCardLoad(10)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedLoad10} ">
+                    <!-- <span [matTooltip]="selectedLoad10 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R495.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Up To 10 Loads</b>
+                    </mat-card-content>
+                </mat-card>
+                <mat-card (click)="onSelectCardLoad(11)" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedLoad11} ">
+                    <!-- <span [matTooltip]="selectedLoad11 ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R1,450.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Unlimited Loads</b>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mb-4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="text-2xl font-bold">Business Directory</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="grid grid-cols-1 gap-6 w-full min-w-0">
+                <mat-card (click)="onSelectCardBusinessDirectory()" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedBusinessDirectory, 'mat-card-not-selected mat-elevation-z8': !selectedBusinessDirectory} ">
+                    <!-- <span [matTooltip]="selectedBusinessDirectory ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R110.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Premium Business Directory Listing</b>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="mb-4">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <span class="text-2xl font-bold">Adverts</span>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="grid grid-cols-1 gap-6 w-full min-w-0">
+                <mat-card (click)="onSelectCardAdvert()" class="mat-card-item"
+                    [ngClass]="{'mat-card-selected mat-elevation-z8': selectedAdvert} ">
+                    <!-- <span [matTooltip]="selectedAdvert ? 'Select Item': 'Remove Selection'" class="mat-card-selection">
+                        <mat-icon>check_circle</mat-icon>
+                    </span> -->
+                    <mat-card-header>
+                        <mat-card-title>R195.00 per month</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <b>Premium Advert Listing</b>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <hr>
+
+    <!-- Actions -->
+    <div class="flex items-center justify-end">
+        <mat-card-title class="text-4xl flex items-center">{{zar | currency:'R':'symbol':'1.0-0'}} / month</mat-card-title>
+        <button class="ml-4" mat-flat-button type="button" [color]="'primary'" [disabled]="zarOriginal==zar" (click)="checkOut()">Subscribe
+        </button>
+    </div>
+
+    <!--  -->
+
+</div>

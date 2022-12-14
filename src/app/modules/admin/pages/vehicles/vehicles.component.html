@@ -1,0 +1,133 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <div class="page-layout blank p-4" fusePerfectScrollbar>        
+        <div class="grid grid-cols-1 sm:grid-cols-6 gap-6 w-full min-w-0">
+            <div class="sm:col-span-4 lg:col-span-4 flex flex-col flex-auto p-6 overflow-hidden" style="padding: 0!important">
+                <div class="table-container bg-card shadow rounded-2xl">
+                    <mat-card class="mat-elevation-z5" style="padding: 4px!important;" *ngIf="dataSource">
+                        <table mat-table [dataSource]="dataSource" matSort>
+                            <ng-container matColumnDef="cud">
+                                <th mat-header-cell *matHeaderCellDef class="cudColumnExtra ml-0 pl-12"
+                                    style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                        (click)="initUpsert(null)" matTooltip="Add Vehicle" [disabled]="loading">
+                                        <mat-icon class="fab-icon">add</mat-icon>
+                                    </button></th>
+                                <td mat-cell *matCellDef="let row" class="cudColumnExtra ml-0 pl-12"
+                                    style="padding-left: 0px!important;"><button mat-icon-button color="default"
+                                        (click)="initUpsert(row)" matTooltip="Update Vehicle" [disabled]="loading">
+                                        <mat-icon class="fab-icon">edit</mat-icon>
+                                    </button><button mat-icon-button color="default" (click)="initDelete(row.id)"
+                                        matTooltip="Remove Vehicle" [disabled]="loading">
+                                        <mat-icon class="fab-icon">delete</mat-icon>
+                                    </button></td>
+                            </ng-container>
+                            <ng-container matColumnDef="userDescription">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="userDescription">UserId</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.userDescription}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="vehicleTypeDescription">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="vehicleTypeDescription">Vehicle Type</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.vehicleType ? row.vehicleType.description : ''}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="description">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="description">Description</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.description}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="registrationNumber">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="registrationNumber">Registration Number</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.registrationNumber}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="maxLoadWeight">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="maxLoadWeight">Max Load Weight (kg)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.maxLoadWeight | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="maxLoadHeight">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="maxLoadHeight">Max Load Height (cm)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.maxLoadHeight | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="maxLoadWidth">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="maxLoadWidth">Max Load Width (cm)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.maxLoadWidth | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="maxLoadLength">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="maxLoadLength">Max Load Length (cm)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.maxLoadLength | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="maxLoadVolume">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="maxLoadVolume">Max Load Volume (litres)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.maxLoadVolume | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="availableCapacity">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="availableCapacity">Available Capacity (%)</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.availableCapacity | number}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="availableFrom">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="availableFrom">Available From</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.availableFrom | date}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="availableTo">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="availableTo">Available To</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.availableTo | date}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="originatingAddressLabel">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="originatingAddressLabel">Originating Address</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell">
+                                    {{getAddressSubstring(row.originatingAddressLabel, ',')}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="destinationAddressLabel">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="destinationAddressLabel">Destination Address</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell">
+                                    {{getAddressSubstring(row.destinationAddressLabel, ',')}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="avatar">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="avatar">Photo</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.avatar}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef="statusDescription">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    <p class="table-header" mat-sort-header="statusDescription">Status</p>
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="table-cell"> {{row.status ? row.status.description : ''}} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="10" [disabled]="loading"></mat-paginator>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="sm:col-span-2 lg:col-span-2 flex flex-col flex-auto p-6 overflow-hidden" style="padding: 0!important">
+                <advert></advert>
+            </div>
+        </div>
+    </div>
+</div>

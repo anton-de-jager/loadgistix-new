@@ -1,0 +1,180 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{formData.title}} Vehicle
+</h1>
+<div mat-dialog-content fxLayout="column">
+    <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+        [formGroup]="form" novalidate style="padding: 0px!important;">
+        <div fxLayout="row wrap" class="w-100-p">
+            <!-- <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>UserId</mat-label>
+                    <mat-select placeholder="UserId" formControlName="userId">
+                        <mat-option *ngFor="let userItem of formData.userList" [value]="userItem.id">
+                            {{userItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>UserId is required</mat-error>
+                </mat-form-field>
+            </div> -->
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Vehicle Type</mat-label>
+                    <mat-select placeholder="VehicleTypeId" formControlName="vehicleTypeId"
+                        (selectionChange)="vehicleTypeChanged()">
+                        <mat-optgroup *ngFor="let vehicleCategoryItem of vehicleCategoryList"
+                            [label]="vehicleCategoryItem.description">
+                            <mat-option *ngFor="let vehicleTypeItem of vehicleCategoryItem.vehicleTypeList"
+                                [value]="vehicleTypeItem.id">
+                                {{vehicleTypeItem.description}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-select>
+                    <mat-error>Vehicle Type is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Description</mat-label><input matInput placeholder="Description"
+                        formControlName="description" id="description">
+                    <mat-error *ngIf="hasError('description', 'required')">Description is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Registration Number</mat-label><input matInput placeholder="Registration Number"
+                        formControlName="registrationNumber" id="description">
+                    <mat-error *ngIf="hasError('registrationNumber', 'required')">Registration Number is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;"></div>
+
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Max Load Weight (kg)</mat-label><input matInput type="number"
+                        placeholder="Max Load Weight" formControlName="maxLoadWeight" id="maxLoadWeight">
+                    <mat-error *ngIf="hasError('maxLoadWeight', 'required')">Max Load Weight is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Max Load Volume (litres)</mat-label><input matInput type="number"
+                        placeholder="Max Load Volume" formControlName="maxLoadVolume" id="maxLoadVolume">
+                    <mat-error *ngIf="hasError('maxLoadVolume', 'required')">Max Load Volume is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="!getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Max Load Height (cm)</mat-label><input matInput type="number"
+                        placeholder="Max Load Height" formControlName="maxLoadHeight" id="maxLoadHeight">
+                    <mat-error *ngIf="hasError('maxLoadHeight', 'required')">Max Load Height is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="!getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Max Load Width (cm)</mat-label><input matInput type="number" placeholder="Max Load Width"
+                        formControlName="maxLoadWidth" id="maxLoadWidth">
+                    <mat-error *ngIf="hasError('maxLoadWidth', 'required')">Max Load Width is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="!getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Max Load Length (cm)</mat-label><input matInput type="number"
+                        placeholder="Max Load Length" formControlName="maxLoadLength" id="maxLoadLength">
+                    <mat-error *ngIf="hasError('maxLoadLength', 'required')">Max Load Length is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="!getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Available Capacity (%)</mat-label><input matInput type="number"
+                        placeholder="AvailableCapacity" formControlName="availableCapacity" id="availableCapacity">
+                    <mat-error *ngIf="hasError('availableCapacity', 'required')">Available Capacity is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="!getVehicleTypeLiquid()" fxFlex="100" fxFlex.gt-xs="50" class="p-4"
+                style="padding: 0px!important;"></div>
+
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Available From</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="picker_availableFrom" placeholder="Choose a date"
+                        formControlName="availableFrom">
+                    <mat-datepicker-toggle matSuffix [for]="picker_availableFrom"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker_availableFrom>
+                    </ngx-mat-datetime-picker>
+                    <mat-error>Available From is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Available To</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="picker_availableTo" placeholder="Choose a date"
+                        formControlName="availableTo">
+                    <mat-datepicker-toggle matSuffix [for]="picker_availableTo"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker_availableTo>
+                    </ngx-mat-datetime-picker>
+                    <mat-error>Available To is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Originating Address</mat-label><input readonly matInput placeholder="Originating Address"
+                        formControlName="originatingAddressLabel" id="originatingAddressLabel"><button matSuffix
+                        mat-button (click)="getAddress('originatingAddressLabel')">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <mat-error *ngIf="hasError('originatingAddressLabel', 'required')">Originating Address is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Destination Address</mat-label><input readonly matInput placeholder="Destination Address"
+                        formControlName="destinationAddressLabel" id="destinationAddressLabel"><button matSuffix
+                        mat-button (click)="getAddress('destinationAddressLabel')">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                    <mat-error *ngIf="hasError('destinationAddressLabel', 'required')">Destination Address is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div fxFlex="100" class="p-4" fxLayout="row" fxLayoutAlign="center center">
+                <input #Image id="fileInput" type="file" (click)="Image.value = null"
+                    (change)="handleFileInput($event.target.files)" accept=".jpg,.png,.jpeg" style="display:none" />
+                <div fxFlex fxLayout="column">
+                    <div fxFlex fxLayout="row">
+                        <!-- <button mat-flat-button fxFlex="100" color="primary" (click)="captureImage()"
+                            style="margin-left: 2px; margin-right: 2px;">Upload Image</button> -->
+                        <button mat-flat-button fxFlex="100" color="primary" (click)="captureImage()"
+                            style="margin-left: 2px; margin-right: 2px;">Capture Image</button>
+                    </div>
+                    <div fxFlex fxLayout="row" fxLayoutAlign="center center" style="margin-top:4px">
+                        <img *ngIf="previewImage" style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="previewImage" class="image" (click)="captureImage()" />
+                        <img *ngIf="!previewImage && form.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            [src]="imagesFolder + 'Vehicles/' + form.value.id + form.value.avatar + '?t=' + timestamp"
+                            class="image" (click)="captureImage()" />
+                        <img *ngIf="!previewImage && !form.value.avatar"
+                            style="max-width: 120px;max-height: 120px;width: auto;height: auto;"
+                            src="assets/images/no-image.jpg" class="image" (click)="captureImage()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-flat-button color="primary" (click)="onYesClick()" [disabled]="!form.valid">Submit</button>
+</div>

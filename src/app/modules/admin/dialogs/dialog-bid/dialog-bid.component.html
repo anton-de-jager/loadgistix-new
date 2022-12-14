@@ -1,0 +1,115 @@
+<h1 mat-dialog-title class="accent dialog-title bg-primary text-on-primary text-secondary">{{formData.title}} Bid</h1>
+<div mat-dialog-content fxLayout="column">
+    <form class="mat-white-bg w-100-p" fxLayout="column" fxLayoutAlign="start" fxFlex="1 0 auto" name="form"
+        [formGroup]="form" novalidate style="padding: 0px!important;">
+        <div fxLayout="row wrap" class="w-100-p">
+            <!-- <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>UserId</mat-label>
+                    <mat-select placeholder="UserId" formControlName="userId">
+                        <mat-option *ngFor="let userItem of formData.userList" [value]="userItem.id">
+                            {{userItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>UserId is required</mat-error>
+                </mat-form-field>
+            </div> -->
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Load Description</mat-label>
+                    <mat-select placeholder="LoadId" formControlName="loadId">
+                        <mat-option *ngFor="let loadItem of formData.loadList" [value]="loadItem.id">
+                            {{loadItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>Load Description is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Vehicle</mat-label>
+                    <mat-select placeholder="VehicleId" formControlName="vehicleId">
+                        <mat-option *ngFor="let vehicleItem of formData.vehicleList" [value]="vehicleItem.id">
+                            {{vehicleItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>Vehicle is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Driver</mat-label>
+                    <mat-select placeholder="DriverId" formControlName="driverId">
+                        <mat-option *ngFor="let driverItem of formData.driverList" [value]="driverItem.id">
+                            {{driverItem.firstName + ' ' + driverItem.lastName}}</mat-option>
+                    </mat-select>
+                    <mat-error>Driver is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Price</mat-label><input matInput type="number" placeholder="Price"
+                        formControlName="price" id="price">
+                    <mat-error *ngIf="hasError('price', 'required')">Price is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Departure Date</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="picker_dateOut" placeholder="Choose a date"
+                        formControlName="dateOut">
+                    <mat-datepicker-toggle matSuffix [for]="picker_dateOut" *ngIf="!readOnly"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker_dateOut>
+                    </ngx-mat-datetime-picker>
+                    <mat-error>Departure Date is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>Delivery Date</mat-label>
+                    <input matInput [ngxMatDatetimePicker]="picker_dateIn" placeholder="Choose a date"
+                        formControlName="dateIn">
+                    <mat-datepicker-toggle matSuffix [for]="picker_dateIn" *ngIf="!readOnly"></mat-datepicker-toggle>
+                    <ngx-mat-datetime-picker #picker_dateIn>
+                    </ngx-mat-datetime-picker>
+                    <mat-error>Delivery Date is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field *ngIf="readOnly" appearance="outline" class="w-100-p" floatLabel="true">
+                    <mat-label>Driver Rating</mat-label>
+                    <input matInput type="number" placeholder="Punctuality" style="display:none"
+                        formControlName="reviewDriver" id="reviewDriver">
+                    <mat-star-rating
+                        [rating]="reviewDriver" [starCount]="5" [color]="starColorP"></mat-star-rating>
+                    <mat-error>Rating is required</mat-error>
+                    <mat-hint><b>{{bidRow.reviewDriverCount}}</b> Reviews</mat-hint>
+                </mat-form-field>
+            </div>
+            <!-- <div *ngIf="readOnly" fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <span>Driver Rating:</span>&nbsp;
+                <span [matBadge]="bidRow.reviewDriverCount" matBadgeOverlap="false">
+                    <mat-star-rating [rating]="bidRow.reviewDriver" [starCount]="5" [color]="starColorP"
+                        style="position: relative; top: 6px;"></mat-star-rating>
+                </span>
+            </div> -->
+            <!-- <div fxFlex="100" fxFlex.gt-xs="50" class="p-4" style="padding: 0px!important;">
+                <mat-form-field appearance="outline" class="w-100-p">
+                    <mat-label>StatusId</mat-label>
+                    <mat-select placeholder="StatusId" formControlName="statusId">
+                        <mat-option *ngFor="let statusItem of formData.statusList" [value]="statusItem.id">
+                            {{statusItem.description}}</mat-option>
+                    </mat-select>
+                    <mat-error>StatusId is required</mat-error>
+                </mat-form-field>
+            </div> -->
+
+        </div>
+    </form>
+</div>
+<div mat-dialog-actions class="dialog-footer">
+    <span style="flex: 1 1 auto;"></span>
+    <button mat-flat-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button *ngIf="readOnly" mat-flat-button color="primary" (click)="accept()" [disabled]="!form.valid">Accept</button>
+    <button *ngIf="readOnly" mat-flat-button color="primary" (click)="decline()"
+        [disabled]="!form.valid">Decline</button>
+    <button *ngIf="!readOnly" mat-flat-button color="primary" (click)="onYesClick()"
+        [disabled]="!form.valid">Submit</button>
+</div>
